@@ -9,18 +9,18 @@ class Vaisseau {
 
 private :
 
-    enum TypeCase { SPACE=' ', WALL='#', DOT='.' };         // Les enum sont d'habitude initialisé avec des nombres, ici on a une équivalence caractère/nombre
-
 	int m_dimx;
 	int m_dimy;
-	//char m_ter [100][100];
-    TypeCase m_ter[100][100];
+	char tab[10][37];
+   
 
 public :
+    
+
 
     /**
     @brief <B>Construit</B> un objet Vaisseau.
-    Le constructeur remplit dimx et dimy et les cases du tableau ter avec un Vaisseau par défaut.
+    Le constructeur remplit dimx et dimy et les cases du tableau tab avec un Vaisseau par défaut.
     @bug S'il y a un bug dans le constructeur, je peux le signaler ici ...
     */
     Vaisseau();
@@ -28,24 +28,19 @@ public :
 
  
 
-    /**
-    @brief Renvoie le type d'objet se trouvant en (x,y)
-    @param x : abs de la case de l'objet
-    @param y : ordonnée de la case de l'objet
-    */
-    TypeCase getXY (const int x, const int y) const;
+   
 
     /**
     @brief Renvoie le type d'objet se trouvant en (x,y)
     @param x : abs de la case de l'objet
     @param y : ordonnée de la case de l'objet
     */
-    unsigned char getXYasChar (const int x, const int y) const;
+    unsigned char getXY (const int x, const int y) const;
 
     /**
     @brief Renvoie la largeur du Vaisseau
     */
-    int getDimX () const;
+    int getDimX() const;
 
     /**
     @brief Renvoie la hauteur du Vaisseau
@@ -55,25 +50,6 @@ public :
 };
 
 
-inline int Vaisseau::getDimX () const { return m_dimx; }
-
-inline int Vaisseau::getDimY () const {	return m_dimy; }
-
-inline Vaisseau::TypeCase Vaisseau::getXY (const int x, const int y) const {
-	assert(x>=0);
-	assert(y>=0);
-	assert(x<m_dimx);
-	assert(y<m_dimy);
-	return m_ter[x][y];
-}
-
-inline unsigned char Vaisseau::getXYasChar (const int x, const int y) const {
-	assert(x>=0);
-	assert(y>=0);
-	assert(x<m_dimx);
-	assert(y<m_dimy);
-    return (char)(m_ter[x][y]);     // ceci ne marche que dans notre cas particulier, car l'enum est initialisé avec les codes ascii
-}
 
 
 #endif
