@@ -1,8 +1,8 @@
-#ifndef _TXTJEU_H
-#define _TXTJEU_H
+#ifndef _TXTJEUO_H
+#define _TXTJEUO_H
 
-#include "Vaisseau.h"
+#include "Jeu.h"
 
-void txtBoucle (Vaisseau & j);
+void txtBoucle (Jeu & j);
 
 #endif
