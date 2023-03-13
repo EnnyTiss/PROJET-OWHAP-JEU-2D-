@@ -1,36 +1,41 @@
 #include "Vaisseau.h"
 #include <cassert>
 
-const char m_Vaisseau1[10][37] = {
- "##############################......",
- "#....#..........#............#......",
- "#....#..........#............#......",
+
+
+
+Vaisseau::Vaisseau() {
+	m_dimy=37;
+	m_dimx=10;
+	const char tabX[10][37]= {
+ "##############################      ",
+ "#0...#.....3....#...........4#      ",
+ "#....#..........#............#      ",
  "#....#####..#########...############",
  "#..................................#",
- "#....#.......................#.....#",
+ "#....#.......................#....6#",
  "#....#####..#########...############",
- "#....#..........#............#......",
- "#....#..........#............#......",
- "##############################......"
-};
+ "#....#..........#............#      ",
+ "#1...#....2.....#...........5#      ",
+ "##############################      "
+	};
 
 
-
-
-Vaisseau::Vaisseau () {
-	m_dimx = 20;
-	m_dimy = 15;
-	for(int x=0;x<m_dimx;++x)
-		for(int y=0;y<m_dimy;++y)
-		{
-			switch(m_Vaisseau1[m_dimy-1-y][x])
-			{
-				case '#': m_ter[x][y] = WALL; break;
-				case '.': m_ter[x][y] = DOT; break;
-				case ' ': m_ter[x][y] = SPACE; break;
-			}
-			// m_ter[x][y] = m_Vaisseau1[m_dimy-1-y][x];
+	for(int x=0;x<m_dimx;x++)
+		for(int y=0;y<m_dimy;y++)
+		{Vaisseau::tab[x][y]=tabX[x][y];
 		}
+
+	
+
 }
 
 
+int Vaisseau::getDimX () const { return m_dimx; }
+
+int Vaisseau::getDimY () const {	return m_dimy; }
+
+unsigned char Vaisseau::getXY (const int x, const int y) const
+{
+	return Vaisseau::tab[x][y];
+}
