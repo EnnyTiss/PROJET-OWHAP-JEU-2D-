@@ -84,7 +84,7 @@ WinTXT::WinTXT (int dx, int dy) {
 
 void WinTXT::clear (char c) {
     for(int i=0;i<dimx;++i)
-        for(int j=0;j<dimy;++j)
+        for(int j=0;j<dimy;++j) 
             print(i,j,c);
 }
 
