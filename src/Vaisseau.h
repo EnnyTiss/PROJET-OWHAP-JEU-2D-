@@ -47,6 +47,8 @@ public :
     */
     int getDimY () const;
 
+     bool estPositionPersoValide (const int x, const int y) const;
+
 };
 
 
