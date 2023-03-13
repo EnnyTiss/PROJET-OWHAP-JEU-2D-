@@ -1,14 +1,14 @@
-#include "Vaisseau.h"
+#include "Jeu.h"
 #include "winTxtO.h"
 #include "txtJeuO.h"
 using namespace std;
 #include <iostream>
 
 
-int main()
+int main(void)
 {
-    Vaisseau v;
-    txtBoucle(v);
+    Jeu j;
+    txtBoucle(j);
     /*for (int i=0; i<v.getDimX(); i++)
     {
         for (int j=0; j<v.getDimY(); j++)
@@ -17,5 +17,6 @@ int main()
         }
         cout<<endl;
     }*/
+    cout<<endl<<"position perso :"<<j.getPerso().getX()<<" "<<j.getPerso().getY()<<endl;
     return 0;
 }
