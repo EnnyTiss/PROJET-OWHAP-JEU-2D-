@@ -7,18 +7,20 @@
 #include "winTxtO.h"
 #include <iostream>
 using namespace std;
-#include "Vaisseau.h"
+#include "Jeu.h"
 
-void txtAff(WinTXT & win, const Vaisseau & jeu) {
+void txtAff(WinTXT & win, const Jeu & jeu) {
 
 
 	win.clear();
 
     // Affichage des murs et des pastilles
-	for(int x=0;x<jeu.getDimX();++x)
-		{for(int y=0;y<jeu.getDimY();++y)
-			{win.print( y, x, jeu.getXY(x,y));
-	
+	for(int x=0;x<jeu.getVaisseau().getDimX();++x)
+		{for(int y=0;y<jeu.getVaisseau().getDimY();++y)
+			{
+				if (x==jeu.getPerso().getX() && y==jeu.getPerso().getY())
+				{win.print (y,x, "P");}
+				else win.print( y, x, jeu.getVaisseau().getXY(x,y));;
 			}
 			
 		}
@@ -34,16 +36,34 @@ void txtAff(WinTXT & win, const Vaisseau & jeu) {
 	win.draw();
 }
 
-void txtBoucle (Vaisseau & jeu) {
+void txtBoucle (Jeu & jeu) {
 	// Creation d'une nouvelle fenetre en mode texte
 	// => fenetre de dimension et position (WIDTH,HEIGHT,STARTX,STARTY)
-    WinTXT win (37,10);//jeu.getDimX(),jeu.getDimY()
-	
-
+    WinTXT ecran (100,100); ecran.clear(); ecran.draw(); // pour clear l'écran
+	WinTXT win (37,10);//jeu.getDimX(37),jeu.getDimY(10)
+	bool ok = true;
+	int c;
 	do {
 	    txtAff(win,jeu);
-		if  (win.getCh()=='m')
-			{break;}
+		c=win.getCh();
+		switch (c) {
+			case 'z':
+				jeu.actionClavier('z');
+				break;
+			case 's':
+				jeu.actionClavier('s');
+				break;
+			case 'q':
+				jeu.actionClavier('q');
+				break;
+			case 'd':
+				jeu.actionClavier('d');
+				break;
+			case 'm':
+				ok = false;
+				break;
+			}
+		} while (ok);
         #ifdef _WIN32
         Sleep(100);
 		#else
@@ -51,6 +71,4 @@ void txtBoucle (Vaisseau & jeu) {
         #endif // WIN32
 
 
-	} while (true);
-
-}
+	}
