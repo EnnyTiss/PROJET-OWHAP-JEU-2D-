@@ -20,8 +20,8 @@ public :
     const Vaisseau& getVaisseau () const;                        //< \brief accesseur nécesseaire pour l'affichage
     const Perso& getPerso () const;                          //< \brief accesseur nécesseaire pour l'affichage
 
-    bool actionClavier(const char touche);          //< \brief rend vrai si mange une pastille, faux sinon
-
+    bool actionClavier(const char touche);          
+    void interationdemande();
 };
 
 inline const Vaisseau& Jeu::getVaisseau () const { return v; }         // du code court comme ca doit être en inline

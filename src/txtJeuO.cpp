@@ -20,7 +20,7 @@ void txtAff(WinTXT & win, const Jeu & jeu) {
 		{for(int y=0;y<jeu.getVaisseau().getDimY();++y)
 			{
 				if (x==jeu.getPerso().getX() && y==jeu.getPerso().getY())
-				{win.print (y,x, "P");}
+				{win.print (y,x, 'P');}
 				else win.print( y, x, jeu.getVaisseau().getXY(x,y));;
 			}
 			
@@ -29,6 +29,8 @@ void txtAff(WinTXT & win, const Jeu & jeu) {
 
 	win.draw();
 	cout<<endl<<"Commandes : zqsd pour se dépalcer, m pour quitter"<<endl;
+	cout<<endl<<"position perso :"<<j.getPerso().getX()<<" "<<j.getPerso().getY()<<endl;
+
 }
 
 void txtBoucle (Jeu & jeu) {
@@ -53,6 +55,9 @@ void txtBoucle (Jeu & jeu) {
 				break;
 			case 'd':
 				jeu.actionClavier('d');
+				break;
+			case 'i':
+				jeu.actionClavier('i');
 				break;
 			case 'm':
 				ok = false;
