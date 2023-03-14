@@ -2,8 +2,19 @@
 #include <iostream>
 using namespace std;
 
-Jeu::Jeu() : v(), p() {
-	
+Jeu::Jeu() 
+{
+	v=Vaisseau(); 
+	p=Perso();
+	tabo[0]= Objet(); tabo[0].setObjet(0,true,1,1);
+	tabo[1]= Objet();tabo[1].setObjet(1,false,8,1); 
+	tabo[2]= Objet();tabo[2].setObjet(2,false,8,11);
+	tabo[3]= Objet();tabo[3].setObjet(3,false,1,11); 
+	tabo[4]= Objet();tabo[4].setObjet(4,false,5,5);
+	tabo[5]= Objet();tabo[5].setObjet(5,false,5,5); 
+	tabo[6]= Objet();tabo[6].setObjet(6,false,6,6);
+	tabo[7]= Objet();tabo[7].setObjet(7,false,7,7); 
+
 }
 
 //const Vaisseau& Jeu::getVaisseau () const{ return v; }
@@ -18,7 +29,7 @@ bool Jeu::PersoPresDeObjet(){
 	for (int i=xP-1; i<xP+2; i++){
 		for (int j=yP-1; j<yP+2; j++){
 			assert(getVaisseau().getXY(i,j)!= 'P');
-			if (getVaisseau().getXY(i,j)!='.' && getVaisseau().getXY(i,j) != '#' && getVaisseau().getXY(i,j) != ' '){
+			if (getVaisseau().getXY(i,j)!='.' && getVaisseau().getXY(i,j)!='!' && getVaisseau().getXY(i,j) != '#' && getVaisseau().getXY(i,j) != ' '){
 				return true;
 				break;
 			}
@@ -40,10 +51,14 @@ void Jeu::interationdemande(){
 		for (int i=xP-1; i<xP+2; i++){
 			for (int j=yP-1; j<yP+2; j++){
 				assert(getVaisseau().getXY(i,j)!= 'P');
-				if (getVaisseau().getXY(i,j)!='.' && getVaisseau().getXY(i,j) != '#' && getVaisseau().getXY(i,j) != ' '){
+				if (getVaisseau().getXY(i,j)!='.' && getVaisseau().getXY(i,j)!='!' && getVaisseau().getXY(i,j) != '#' && getVaisseau().getXY(i,j) != ' '){
 				 a=i;
 				 b=j;
-				 cout<<a<<" "<<b<<"    "<<endl;
+				 int num = (int) getVaisseau().getXY(i,j);
+				 num=num-'0';
+				 
+				 cout<<a<<" "<<b<<"    "<<num<<" "<<endl;
+				 getObjet(num).setActifObjet(false);
 				}
 			
 			}
