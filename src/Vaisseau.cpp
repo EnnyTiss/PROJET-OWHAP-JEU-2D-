@@ -35,7 +35,7 @@ Vaisseau::Vaisseau() {
 
 bool Vaisseau::estPositionPersoValide (const int x, const int y) const {
 	int num = (int) tab[x][y];
-	return ((x>=0) && (x<m_dimx) && (y>=0) && (y<m_dimy) && (tab[x][y]!='#') && ((num-48)>9));
+	return ((x>=0) && (x<m_dimx) && (y>=0) && (y<m_dimy) && (tab[x][y]=='.'));
 	cout<<num;
 }
 

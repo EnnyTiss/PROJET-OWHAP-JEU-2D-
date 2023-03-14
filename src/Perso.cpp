@@ -2,8 +2,8 @@
 
 Perso::Perso () {
     
-	m_x = 1;
-	m_y = 1;
+	m_x = 5;
+	m_y = 16;
 }
 
 void Perso::haut (const Vaisseau & t) {
