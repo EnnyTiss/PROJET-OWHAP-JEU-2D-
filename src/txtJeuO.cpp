@@ -13,6 +13,7 @@ void txtAff(WinTXT & win, const Jeu & jeu) {
 
 
 	win.clear();
+	
 
     // Affichage des murs et des pastilles
 	for(int x=0;x<jeu.getVaisseau().getDimX();++x)
@@ -23,17 +24,11 @@ void txtAff(WinTXT & win, const Jeu & jeu) {
 				else win.print( y, x, jeu.getVaisseau().getXY(x,y));;
 			}
 			
+			
 		}
-		/*for (int i=0; i<jeu.getDimX(); i++)
-    	{
-        for (int j=0; j<jeu.getDimY(); j++)
-        {
-            cout<<jeu.getXY(i,j);
-        }
-        cout<<endl;
-    	}*/
 
 	win.draw();
+	cout<<endl<<"Commandes : zqsd pour se dépalcer, m pour quitter"<<endl;
 }
 
 void txtBoucle (Jeu & jeu) {

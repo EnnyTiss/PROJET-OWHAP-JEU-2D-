@@ -1,5 +1,8 @@
 #include "Vaisseau.h"
 #include <cassert>
+#include <iostream>
+
+using namespace std;
 
 
 
@@ -12,7 +15,7 @@ Vaisseau::Vaisseau() {
  "#0...#.....3....#...........4#      ",
  "#....#..........#............#      ",
  "#....#####..#########...############",
- "#..................................#",
+ "#...............7..................#",
  "#.................................6#",
  "#....#####..#########...############",
  "#....#..........#............#      ",
@@ -31,7 +34,9 @@ Vaisseau::Vaisseau() {
 }
 
 bool Vaisseau::estPositionPersoValide (const int x, const int y) const {
-	return ((x>=0) && (x<m_dimx) && (y>=0) && (y<m_dimy) && (tab[x][y]!='#'));
+	int num = (int) tab[x][y];
+	return ((x>=0) && (x<m_dimx) && (y>=0) && (y<m_dimy) && (tab[x][y]!='#') && ((num-48)>9));
+	cout<<num;
 }
 
 
