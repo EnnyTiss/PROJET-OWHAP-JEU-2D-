@@ -2,6 +2,8 @@
 #define _PERSO_H
 
 #include "Vaisseau.h"
+#include "Vec2D.h"
+
 
 /**
 @brief Un Perso = sa position 2D
@@ -10,7 +12,7 @@ class Perso {
 
 private :
 
-	int m_x, m_y;
+	Vec2D posPerso;
 
 public:
 
@@ -21,15 +23,14 @@ public:
     void haut (const Vaisseau & t);
     void bas (const Vaisseau & t);
 
-    int getX () const;
-    int getY () const;
+    Vec2D getPosPerso () const;
 
 };
 
 
-inline int Perso::getX () const { return m_x; }
+inline Vec2D Perso::getPosPerso () const { return posPerso; }
 
-inline int Perso::getY () const { return m_y; }
+//inline int Perso::getY () const { return m_y; }
 
 
 #endif

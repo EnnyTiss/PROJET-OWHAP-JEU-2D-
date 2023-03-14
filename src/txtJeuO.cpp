@@ -8,6 +8,7 @@
 #include <iostream>
 using namespace std;
 #include "Jeu.h"
+using namespace std;
 
 void txtAff(WinTXT & win, const Jeu & jeu) {
 
@@ -19,16 +20,16 @@ void txtAff(WinTXT & win, const Jeu & jeu) {
 	for(int x=0;x<jeu.getVaisseau().getDimX();++x)
 		{for(int y=0;y<jeu.getVaisseau().getDimY();++y)
 			{
-				if (x==jeu.getPerso().getX() && y==jeu.getPerso().getY())
+				if (Vec2D(x,y)==jeu.getPerso().getPosPerso())
 				{win.print (y,x, 'P');}
 				else 
 				{
 					win.print( y, x, jeu.getVaisseau().getXY(x,y));
 					for (int i=0; i<8; i++)
 					{
-					if (x==jeu.getObjet(i).getPosObjetX() && y==jeu.getObjet(i).getPosObjetY() && jeu.getObjet(i).getActifObjet())
+					if (Vec2D(x,y)==jeu.getObjet(i).getPosObjet() && jeu.getObjet(i).getActifObjet())
 					{win.print (y,x, '!');}
-					else {win.print (y,x, jeu.getVaisseau().getXY(x,y));}
+					//else {win.print (y,x, jeu.getVaisseau().getXY(x,y));}
 					} 
 				}
 			}
@@ -38,7 +39,7 @@ void txtAff(WinTXT & win, const Jeu & jeu) {
 
 	win.draw();
 	cout<<endl<<"Commandes : zqsd pour se dépalcer, m pour quitter, i pour intéragir"<<endl;
-	cout<<endl<<"position perso :"<<jeu.getPerso().getX()<<" "<<jeu.getPerso().getY()<<"   "<<endl;
+	cout<<endl<<"position perso :"<<jeu.getPerso().getPosPerso().x<<" "<<jeu.getPerso().getPosPerso().y<<endl;
 
 }
 

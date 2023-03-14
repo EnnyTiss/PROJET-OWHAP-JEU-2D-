@@ -14,7 +14,6 @@ private :
 	Perso p;
     Objet tabo[8];
 
-	
 
 public :
 
@@ -22,6 +21,7 @@ public :
 
     const Vaisseau& getVaisseau () const;                        //< \brief accesseur nécesseaire pour l'affichage
     const Perso& getPerso () const;                          //< \brief accesseur nécesseaire pour l'affichage
+    Objet& getObjet (int id); 
     Objet getObjet (int id) const; 
 
     bool actionClavier(const char touche);   
@@ -33,7 +33,10 @@ inline const Vaisseau& Jeu::getVaisseau () const { return v; }         // du cod
 
 inline const Perso& Jeu::getPerso () const { return p; }
 
+inline Objet& Jeu::getObjet(int id)  { return tabo[id]; }
+
 inline Objet Jeu::getObjet(int id) const { return tabo[id]; }
+
 
 
 #endif

@@ -1,6 +1,8 @@
 #ifndef _VAISSEAU_H
 #define _VAISSEAU_H
 #include <cassert>
+#include "Vec2D.h"
+
 
 /**
 @brief La classe Vaisseau contient ses dimensions et un tab 2D de cases (une case=1 char)
