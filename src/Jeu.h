@@ -3,7 +3,7 @@
 #include "cassert"
 #include "Perso.h"
 #include "Vaisseau.h"
-#include "cassert"
+#include "Objet.h"
 
 
 class Jeu {
@@ -12,6 +12,8 @@ private :
 
 	Vaisseau v;
 	Perso p;
+    Objet tabo[8];
+
 	
 
 public :
@@ -20,6 +22,7 @@ public :
 
     const Vaisseau& getVaisseau () const;                        //< \brief accesseur nécesseaire pour l'affichage
     const Perso& getPerso () const;                          //< \brief accesseur nécesseaire pour l'affichage
+    Objet getObjet (int id) const; 
 
     bool actionClavier(const char touche);   
     bool PersoPresDeObjet();       
@@ -30,6 +33,7 @@ inline const Vaisseau& Jeu::getVaisseau () const { return v; }         // du cod
 
 inline const Perso& Jeu::getPerso () const { return p; }
 
+inline Objet Jeu::getObjet(int id) const { return tabo[id]; }
 
 
 #endif

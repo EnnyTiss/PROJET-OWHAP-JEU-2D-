@@ -8,6 +8,7 @@ using namespace std;
 int main(void)
 {
     Jeu j;
+    j.getObjet(1).setActifObjet(true);
     txtBoucle(j);
     /*for (int i=0; i<v.getDimX(); i++)
     {
@@ -17,6 +18,5 @@ int main(void)
         }
         cout<<endl;
     }*/
-    cout<<endl<<"position perso :"<<j.getPerso().getX()<<" "<<j.getPerso().getY()<<endl;
     return 0;
 }

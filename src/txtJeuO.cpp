@@ -21,7 +21,16 @@ void txtAff(WinTXT & win, const Jeu & jeu) {
 			{
 				if (x==jeu.getPerso().getX() && y==jeu.getPerso().getY())
 				{win.print (y,x, 'P');}
-				else win.print( y, x, jeu.getVaisseau().getXY(x,y));;
+				else 
+				{
+					win.print( y, x, jeu.getVaisseau().getXY(x,y));
+					for (int i=0; i<8; i++)
+					{
+					if (x==jeu.getObjet(i).getPosObjetX() && y==jeu.getObjet(i).getPosObjetY() && jeu.getObjet(i).getActifObjet())
+					{win.print (y,x, '!');}
+					else {win.print (y,x, jeu.getVaisseau().getXY(x,y));}
+					} 
+				}
 			}
 			
 			

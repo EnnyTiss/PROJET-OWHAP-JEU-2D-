@@ -42,12 +42,16 @@ public :
     */
     int getDimX() const;
 
+
+
     /**
     @brief Renvoie la hauteur du Vaisseau
     */
     int getDimY () const;
 
-     bool estPositionPersoValide (const int x, const int y) const;
+    bool estPositionPersoValide (const int x, const int y) const;
+
+    
 
 };
 
