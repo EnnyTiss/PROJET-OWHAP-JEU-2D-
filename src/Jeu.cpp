@@ -50,8 +50,24 @@ bool Jeu::actionClavier (const char touche) {
 				interationdemande();
 				break;
 	}
-
 	
+
 	return false;
 }
 
+bool Jeu::PersoPresDeObjet(){
+	
+	int xP = getPerso().getX();
+	int yP = getPerso().getY();
+
+	for (int i=xP-1; i<xP+1; i++){
+		for (int j=yP-1; j<yP+1; j++){
+			assert(getVaisseau().getXY(i,j)!= 'P');
+			if (getVaisseau().getXY(i,j) != '.' && getVaisseau().getXY(i,j) != '#' && getVaisseau().getXY(i,j) != ' '){
+				return true;
+				break;
+			}
+			else return false;
+		}
+	} 
+}
