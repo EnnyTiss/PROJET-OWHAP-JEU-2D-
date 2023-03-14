@@ -7,6 +7,7 @@ using namespace std;
 
 int main(void)
 {
+    termClear();
     Jeu j;
     j.getObjet(1).setActifObjet(true);
     txtBoucle(j);
@@ -18,5 +19,6 @@ int main(void)
         }
         cout<<endl;
     }*/
+    termClear();
     return 0;
 }

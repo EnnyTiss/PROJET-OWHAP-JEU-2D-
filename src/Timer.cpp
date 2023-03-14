@@ -11,7 +11,7 @@ using namespace std;
 Timer::Timer(){
     val = 60;
     valMin = 0;
-    valMax = 60;
+    valMax = 600000;
     actifCompteur = true;
 }
 
@@ -31,13 +31,7 @@ void Timer::setActif(bool b){
     actifCompteur = b;
 }
 
-int Timer::getValMin() const{
 
-}
-
-int Timer::getValMax() const{
-
-}
 void Timer::GameOver() {
     assert(val==0);
     setActif(false);
@@ -53,19 +47,18 @@ void Timer::reinitialiser(){
 
 int Timer::ecoulementTimer(){
     assert(actifCompteur==true);
-    clock_t chrono;
-    double temps = 0;
-    int secondes_restantes;
+    
+    int temps=0;
+    temps = (int(clock()) / 1000);
+    return temps;
+    /*do{
+    
+        temps = (int(clock()) / 1000);
 
-    while (secondes_restantes > 0)
-    {
+        return temps;
 
-        secondes_restantes = valMax - temps;
+        if (temps ==1000)
+        {break;}
 
-        //...Jeu
-        temps = (int(clock() - temps) / 1000);
-
-        return secondes_restantes;
-
-    }
+    }while(temps<60);*/
 }

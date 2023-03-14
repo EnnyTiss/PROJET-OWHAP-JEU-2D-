@@ -1,11 +1,11 @@
 EXEC_NAME =   bin/affichage 
 
-OBJ3 =  obj/main_txt.o obj/Vaisseau.o obj/txtJeuO.o obj/winTxtO.o obj/Jeu.o obj/Perso.o obj/Objet.o obj/Vec2D.o
+OBJ3 =  obj/main_txt.o obj/Vaisseau.o obj/txtJeuO.o obj/winTxtO.o obj/Jeu.o obj/Perso.o obj/Objet.o obj/Vec2D.o obj/Timer.o
 CFLAGS = -Wall -ggdb
 
 
 	
-all: $(EXEC_NAME)
+all:  $(EXEC_NAME)
 
 
 bin/affichage: $(OBJ3)
@@ -32,6 +32,9 @@ obj/Objet.o: src/Objet.cpp src/Objet.h src/Vec2D.h
 
 obj/winTxtO.o: src/winTxtO.cpp src/winTxtO.h 
 	g++ $(CFLAGS)  -c src/winTxtO.cpp -o obj/winTxtO.o
+
+obj/Timer.o: src/Timer.cpp src/Timer.h 
+	g++ $(CFLAGS)  -c src/Timer.cpp -o obj/Timer.o
 
 obj/Vec2D.o: src/Vec2D.cpp src/Vec2D.h 
 	g++ $(CFLAGS)  -c src/Vec2D.cpp -o obj/Vec2D.o

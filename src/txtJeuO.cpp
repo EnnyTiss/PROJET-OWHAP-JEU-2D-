@@ -17,8 +17,8 @@ void txtAff(WinTXT & win, const Jeu & jeu) {
 	
 
     // Affichage des murs et des pastilles
-	for(int x=0;x<jeu.getVaisseau().getDimX();++x)
-		{for(int y=0;y<jeu.getVaisseau().getDimY();++y)
+	for(int x=0;x<jeu.getVaisseau().getDimX();++x){
+		for(int y=0;y<jeu.getVaisseau().getDimY();++y)
 			{
 				if (Vec2D(x,y)==jeu.getPerso().getPosPerso())
 				{win.print (y,x, 'P');}
@@ -35,12 +35,14 @@ void txtAff(WinTXT & win, const Jeu & jeu) {
 			}
 			
 			
-		}
+	}
 
 	win.draw();
 	cout<<endl<<"Commandes : zqsd pour se dépalcer, m pour quitter, i pour intéragir"<<endl;
 	cout<<endl<<"position perso :"<<jeu.getPerso().getPosPerso().x<<" "<<jeu.getPerso().getPosPerso().y<<endl;
-
+	if (jeu.getTimer().ecoulementTimer()<=60000){
+	cout<<endl<<endl<<endl<<"temps restant :"<<jeu.getTimer().ecoulementTimer()/1000<<endl;}
+	
 }
 
 void txtBoucle (Jeu & jeu) {
