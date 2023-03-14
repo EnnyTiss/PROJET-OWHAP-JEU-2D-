@@ -20,8 +20,7 @@ class Timer {
         void reinitialiser();
         void setVal(int v);
         void setActif(bool b);
-        int getValMin() const;
-        int getValMax() const;
+
         void GameOver();
         int ecoulementTimer();
 };

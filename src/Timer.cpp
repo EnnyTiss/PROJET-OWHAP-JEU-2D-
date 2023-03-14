@@ -33,14 +33,12 @@ void Timer::setActif(bool b){
 
 
 void Timer::GameOver() {
-    assert(val==0);
+    
     setActif(false);
     cout<<"Temps écoulé, vous avez perdu ! "<<endl;
 }
 
 void Timer::reinitialiser(){
-    assert(val == 0);
-    setVal(valMax);
     setActif(true);
     
 }
@@ -51,14 +49,5 @@ int Timer::ecoulementTimer(){
     int temps=0;
     temps = (int(clock()) / 1000);
     return temps;
-    /*do{
-    
-        temps = (int(clock()) / 1000);
-
-        return temps;
-
-        if (temps ==1000)
-        {break;}
-
-    }while(temps<60);*/
+ 
 }

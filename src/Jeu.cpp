@@ -42,7 +42,7 @@ bool Jeu::PersoPresDeObjet(){
 void Jeu::interationdemande(){
 	if (PersoPresDeObjet())
 	{
-		cout<<"y'a un truc"<<endl;
+		cout<<"y a un obj "<<endl;
 
 		int b;
 		int a;

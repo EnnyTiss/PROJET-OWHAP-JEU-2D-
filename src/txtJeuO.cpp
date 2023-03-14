@@ -40,8 +40,9 @@ void txtAff(WinTXT & win, const Jeu & jeu) {
 	win.draw();
 	cout<<endl<<"Commandes : zqsd pour se dépalcer, m pour quitter, i pour intéragir"<<endl;
 	cout<<endl<<"position perso :"<<jeu.getPerso().getPosPerso().x<<" "<<jeu.getPerso().getPosPerso().y<<endl;
-	if (jeu.getTimer().ecoulementTimer()<=60000){
+	if (jeu.getTimer().ecoulementTimer()<=10000){
 	cout<<endl<<endl<<endl<<"temps restant :"<<jeu.getTimer().ecoulementTimer()/1000<<endl;}
+	else{jeu.getTimer().GameOver(); }
 	
 }
 
@@ -75,6 +76,7 @@ void txtBoucle (Jeu & jeu) {
 				ok = false;
 				break;
 			}
+			
 		} while (ok);
         #ifdef _WIN32
         Sleep(100);

@@ -1,11 +1,13 @@
-EXEC_NAME =   bin/affichage 
+EXEC_NAME =     bin/affichage 
 
 OBJ3 =  obj/main_txt.o obj/Vaisseau.o obj/txtJeuO.o obj/winTxtO.o obj/Jeu.o obj/Perso.o obj/Objet.o obj/Vec2D.o obj/Timer.o
 CFLAGS = -Wall -ggdb
 
 
 	
-all:  $(EXEC_NAME)
+all: 
+	rm obj/* bin/* ; make $(EXEC_NAME) #
+#permet de faire le make clean et le make en même temps
 
 
 bin/affichage: $(OBJ3)
@@ -40,4 +42,4 @@ obj/Vec2D.o: src/Vec2D.cpp src/Vec2D.h
 	g++ $(CFLAGS)  -c src/Vec2D.cpp -o obj/Vec2D.o
 
 clean:
-	rm  obj/*  bin/* data/*
+	rm  obj/*  bin/* 
