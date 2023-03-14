@@ -1,6 +1,6 @@
 #ifndef _JEU_H
 #define _JEU_H
-
+#include "cassert"
 #include "Perso.h"
 #include "Vaisseau.h"
 
@@ -20,7 +20,8 @@ public :
     const Vaisseau& getVaisseau () const;                        //< \brief accesseur nécesseaire pour l'affichage
     const Perso& getPerso () const;                          //< \brief accesseur nécesseaire pour l'affichage
 
-    bool actionClavier(const char touche);          
+    bool actionClavier(const char touche);   
+    bool PersoPresDeObjet();       
     void interationdemande();
 };
 

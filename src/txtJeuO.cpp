@@ -28,8 +28,8 @@ void txtAff(WinTXT & win, const Jeu & jeu) {
 		}
 
 	win.draw();
-	cout<<endl<<"Commandes : zqsd pour se dépalcer, m pour quitter"<<endl;
-	cout<<endl<<"position perso :"<<j.getPerso().getX()<<" "<<j.getPerso().getY()<<endl;
+	cout<<endl<<"Commandes : zqsd pour se dépalcer, m pour quitter, i pour intéragir"<<endl;
+	cout<<endl<<"position perso :"<<jeu.getPerso().getX()<<" "<<jeu.getPerso().getY()<<"   "<<endl;
 
 }
 

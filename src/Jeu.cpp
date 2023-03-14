@@ -10,26 +10,46 @@ Jeu::Jeu() : v(), p() {
 
 //const Perso& Jeu::getPerso () const{	return p; }
 
+bool Jeu::PersoPresDeObjet(){
+	
+	int xP = getPerso().getX();
+	int yP = getPerso().getY();
+
+	for (int i=xP-1; i<xP+2; i++){
+		for (int j=yP-1; j<yP+2; j++){
+			assert(getVaisseau().getXY(i,j)!= 'P');
+			if (getVaisseau().getXY(i,j)!='.' && getVaisseau().getXY(i,j) != '#' && getVaisseau().getXY(i,j) != ' '){
+				return true;
+				break;
+			}
+			
+		}
+	}  return false;
+}
+
 void Jeu::interationdemande(){
-	//if (j.PersoPresDeObjet())
-	//{
+	if (PersoPresDeObjet())
+	{
+		cout<<"y'a un truc"<<endl;
+
 		int b;
 		int a;
-		int x =getPerso().getX();int xmax =x;
-		int y =  getPerso().getY(); int ymax=y;
-		for (int i =x-1; i<xmax+1;i++)
-		{for (int j=y-1; j<ymax+1;j++)
-			{if (getVaisseau().getXY(i,j)!='.' && getVaisseau().getXY(i,j)!='#' && getVaisseau().getXY(i,j)!='P')
-				a=i;
-				b=j;
-				cout<<a<<b<<endl;
-			}
-		
-		}
-		
+		int xP = getPerso().getX();
+		int yP = getPerso().getY();
 
-	//}
+		for (int i=xP-1; i<xP+2; i++){
+			for (int j=yP-1; j<yP+2; j++){
+				assert(getVaisseau().getXY(i,j)!= 'P');
+				if (getVaisseau().getXY(i,j)!='.' && getVaisseau().getXY(i,j) != '#' && getVaisseau().getXY(i,j) != ' '){
+				 a=i;
+				 b=j;
+				 cout<<a<<" "<<b<<"    "<<endl;
+				}
+			
+			}
 	}
+	} else cout<<"ya r        "<<endl;
+}
 
 
 bool Jeu::actionClavier (const char touche) {
@@ -55,19 +75,3 @@ bool Jeu::actionClavier (const char touche) {
 	return false;
 }
 
-bool Jeu::PersoPresDeObjet(){
-	
-	int xP = getPerso().getX();
-	int yP = getPerso().getY();
-
-	for (int i=xP-1; i<xP+1; i++){
-		for (int j=yP-1; j<yP+1; j++){
-			assert(getVaisseau().getXY(i,j)!= 'P');
-			if (getVaisseau().getXY(i,j) != '.' && getVaisseau().getXY(i,j) != '#' && getVaisseau().getXY(i,j) != ' '){
-				return true;
-				break;
-			}
-			else return false;
-		}
-	} 
-}
