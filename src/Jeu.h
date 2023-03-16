@@ -5,6 +5,7 @@
 #include "Vaisseau.h"
 #include "Objet.h"
 #include "Timer.h"
+#include "BarreProg.h"
 
 
 class Jeu {
@@ -15,6 +16,7 @@ private :
 	Perso p;
     Objet tabo[8];
     Timer timer;
+    BarreProg BP;
 
 
 public :
@@ -25,6 +27,7 @@ public :
     const Perso& getPerso () const;                          //< \brief accesseur nécesseaire pour l'affichage
     Objet& getObjet (int id); 
     Objet getObjet (int id) const; 
+    const BarreProg& getBarreProg() const;
 
     Timer& getTimer (); 
     Timer getTimer () const; 
@@ -43,6 +46,9 @@ inline Objet Jeu::getObjet(int id) const { return tabo[id]; }
 
 inline Timer& Jeu::getTimer () {return timer;}
 inline Timer Jeu::getTimer () const {return timer;}
+
+inline const BarreProg& Jeu::getBarreProg() const { return BP; }         // du code court comme ca doit être en inline
+
 
 
 
