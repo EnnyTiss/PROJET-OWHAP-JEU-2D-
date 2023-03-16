@@ -4,6 +4,7 @@
 #include "Perso.h"
 #include "Vaisseau.h"
 #include "Objet.h"
+#include "Timer.h"
 
 
 class Jeu {
@@ -13,7 +14,7 @@ private :
 	Vaisseau v;
 	Perso p;
     Objet tabo[8];
-
+    Timer timer;
 	
 
 public :
@@ -23,6 +24,9 @@ public :
     const Vaisseau& getVaisseau () const;                        //< \brief accesseur nécesseaire pour l'affichage
     const Perso& getPerso () const;                          //< \brief accesseur nécesseaire pour l'affichage
     Objet getObjet (int id) const; 
+    Objet& getObjet (int id);
+    Timer getTimer() const ;
+    Timer& getTimer();
 
     bool actionClavier(const char touche);   
     bool PersoPresDeObjet();       
@@ -33,7 +37,8 @@ inline const Vaisseau& Jeu::getVaisseau () const { return v; }         // du cod
 
 inline const Perso& Jeu::getPerso () const { return p; }
 
-inline Objet Jeu::getObjet(int id) const { return tabo[id]; }
+inline Objet& Jeu::getObjet(int id) { return tabo[id]; }
 
+inline Timer& Jeu::getTimer() {return timer;}
 
 #endif

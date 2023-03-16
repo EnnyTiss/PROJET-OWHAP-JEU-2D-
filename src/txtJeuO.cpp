@@ -9,6 +9,7 @@
 using namespace std;
 #include "Jeu.h"
 
+
 void txtAff(WinTXT & win, const Jeu & jeu) {
 
 
@@ -39,6 +40,7 @@ void txtAff(WinTXT & win, const Jeu & jeu) {
 	win.draw();
 	cout<<endl<<"Commandes : zqsd pour se dépalcer, m pour quitter, i pour intéragir"<<endl;
 	cout<<endl<<"position perso :"<<jeu.getPerso().getX()<<" "<<jeu.getPerso().getY()<<"   "<<endl;
+	cout<<endl<< "Temps restant : " << jeu.getTimer().ecoulementTimer() << "\n";
 
 }
 

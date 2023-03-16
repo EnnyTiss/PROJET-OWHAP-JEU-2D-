@@ -15,6 +15,9 @@ Jeu::Jeu()
 	tabo[6]= Objet();tabo[6].setObjet(6,false,6,6);
 	tabo[7]= Objet();tabo[7].setObjet(7,false,7,7); 
 
+	timer = Timer(); timer=Timer(60,0,60,true);
+
+
 }
 
 //const Vaisseau& Jeu::getVaisseau () const{ return v; }

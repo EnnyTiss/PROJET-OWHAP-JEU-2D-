@@ -39,7 +39,7 @@ int Timer::getValMax() const{
 
 }
 void Timer::GameOver() {
-    assert(val==0);
+    //assert(val==60);
     setActif(false);
     cout<<"Temps écoulé, vous avez perdu ! "<<endl;
 }
@@ -53,7 +53,8 @@ void Timer::reinitialiser(){
 
 int Timer::ecoulementTimer(){
     assert(actifCompteur==true);
-    clock_t chrono;
+    clock_t debut = clock() ;
+    clock_t fin;
     double temps = 0;
     int secondes_restantes;
 
@@ -64,7 +65,7 @@ int Timer::ecoulementTimer(){
 
         //...Jeu
         temps = (int(clock() - temps) / 1000);
-
+        assert(secondes_restantes>=0);
         return secondes_restantes;
 
     }
