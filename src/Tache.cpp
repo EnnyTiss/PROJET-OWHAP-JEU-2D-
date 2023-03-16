@@ -2,7 +2,11 @@
 
 using namespace std;
 
-int main(){
-
-    return 0;
+Tache::Tache() {
+    idTache = 0;
 }
+
+Tache::Tache(int idT){
+    idTache = idT;
+}
+

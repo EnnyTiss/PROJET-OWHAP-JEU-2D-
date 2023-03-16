@@ -6,8 +6,8 @@
 #endif // WIN32
 #include "winTxtO.h"
 #include <iostream>
-using namespace std;
 #include "Jeu.h"
+
 using namespace std;
 
 void txtAff(WinTXT & win, const Jeu & jeu) {

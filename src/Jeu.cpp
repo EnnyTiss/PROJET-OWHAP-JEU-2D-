@@ -17,6 +17,9 @@ Jeu::Jeu()
 	timer= Timer(); timer=Timer(60,0,18000,true);
 	BP=BarreProg();
 
+	timer = Timer(); timer=Timer(60,0,60,true);
+
+
 }
 
 //const Vaisseau& Jeu::getVaisseau () const{ return v; }

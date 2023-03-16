@@ -42,7 +42,6 @@ inline const Vaisseau& Jeu::getVaisseau () const { return v; }         // du cod
 inline const Perso& Jeu::getPerso () const { return p; }
 
 inline Objet& Jeu::getObjet(int id)  { return tabo[id]; }
-
 inline Objet Jeu::getObjet(int id) const { return tabo[id]; }
 
 inline Timer& Jeu::getTimer () {return timer;}
