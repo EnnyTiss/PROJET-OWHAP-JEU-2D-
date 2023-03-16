@@ -19,6 +19,6 @@ int main(void)
         }
         cout<<endl;
     }*/
-    termClear();
+    //termClear();
     return 0;
 }

@@ -16,7 +16,7 @@ void txtAff(WinTXT & win, const Jeu & jeu) {
 	win.clear();
 	
 
-    // Affichage des murs et des pastilles
+    // Affichage du décors, du perso et des évenements
 	for(int x=0;x<jeu.getVaisseau().getDimX();++x){
 		for(int y=0;y<jeu.getVaisseau().getDimY();++y)
 			{
@@ -32,17 +32,31 @@ void txtAff(WinTXT & win, const Jeu & jeu) {
 					//else {win.print (y,x, jeu.getVaisseau().getXY(x,y));}
 					} 
 				}
+				
 			}
 			
 			
 	}
+	//Affichage de la barre de prog
+	for (int i=0; i<jeu.getBarreProg().getTaille();i++)
+				{ if (i==jeu.getBarreProg().getNow())
+				  {
+					  if (jeu.getBarreProg().getC(i)=='0')
+					  {win.print(i,10,'8');}
+					  else
+					  {win.print(i,10,'X');}}
+				  else
+					{win.print(i,10, jeu.getBarreProg().getC(i));}
+				}
+	
 
 	win.draw();
 	cout<<endl<<"Commandes : zqsd pour se dépalcer, m pour quitter, i pour intéragir"<<endl;
 	cout<<endl<<"position perso :"<<jeu.getPerso().getPosPerso().x<<" "<<jeu.getPerso().getPosPerso().y<<endl;
-	if (jeu.getTimer().ecoulementTimer()<=10000){
-	cout<<endl<<endl<<endl<<"temps restant :"<<jeu.getTimer().ecoulementTimer()/1000<<endl;}
+	if (jeu.getTimer().ecoulementTimer()<=jeu.getTimer().getValMax()){
+	cout<<endl<<endl<<endl<<"temps  :"<<jeu.getTimer().ecoulementTimer()<<endl;}
 	else{jeu.getTimer().GameOver(); }
+	cout<<endl<<"barreprog temp: "<<jeu.getBarreProg().getNow();
 	
 }
 
@@ -50,7 +64,7 @@ void txtBoucle (Jeu & jeu) {
 	// Creation d'une nouvelle fenetre en mode texte
 	// => fenetre de dimension et position (WIDTH,HEIGHT,STARTX,STARTY)
     WinTXT ecran (100,100); ecran.clear(); ecran.draw(); // pour clear l'écran
-	WinTXT win (37,10);//jeu.getDimX(37),jeu.getDimY(10)
+	WinTXT win (37,11);//jeu.getDimX(37),jeu.getDimY(10)
 	bool ok = true;
 	int c;
 	do {

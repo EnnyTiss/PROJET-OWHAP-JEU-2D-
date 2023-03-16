@@ -14,7 +14,8 @@ Jeu::Jeu()
 	tabo[5]= Objet();tabo[5].setObjet(5,false,8,28); 
 	tabo[6]= Objet();tabo[6].setObjet(6,false,5,34);
 	tabo[7]= Objet();tabo[7].setObjet(7,false,4,16); 
-	timer= Timer(); timer=Timer(60,0,60,true);
+	timer= Timer(); timer=Timer(60,0,18000,true);
+	BP=BarreProg();
 
 }
 
@@ -90,4 +91,6 @@ bool Jeu::actionClavier (const char touche) {
 
 	return false;
 }
+
+
 

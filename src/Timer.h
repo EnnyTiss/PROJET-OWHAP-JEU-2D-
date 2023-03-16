@@ -20,9 +20,9 @@ class Timer {
         void reinitialiser();
         void setVal(int v);
         void setActif(bool b);
-
+        int getValMax() const;
         void GameOver();
-        int ecoulementTimer();
+        int ecoulementTimer() const;
 };
 
 #endif

@@ -1,12 +1,12 @@
 EXEC_NAME =     bin/affichage 
 
-OBJ3 =  obj/main_txt.o obj/Vaisseau.o obj/txtJeuO.o obj/winTxtO.o obj/Jeu.o obj/Perso.o obj/Objet.o obj/Vec2D.o obj/Timer.o
+OBJ3 =  obj/main_txt.o obj/Vaisseau.o obj/txtJeuO.o  obj/winTxtO.o obj/Jeu.o obj/Perso.o obj/Objet.o obj/Vec2D.o obj/Timer.o obj/BarreProg.o
 CFLAGS = -Wall -ggdb
 
 
 	
 all: 
-	rm obj/* bin/* ; make $(EXEC_NAME) #
+	rm obj/* bin/* ; make $(EXEC_NAME) 
 #permet de faire le make clean et le make en même temps
 
 
@@ -37,6 +37,9 @@ obj/winTxtO.o: src/winTxtO.cpp src/winTxtO.h
 
 obj/Timer.o: src/Timer.cpp src/Timer.h 
 	g++ $(CFLAGS)  -c src/Timer.cpp -o obj/Timer.o
+
+obj/BarreProg.o: src/BarreProg.cpp src/BarreProg.h 
+	g++ $(CFLAGS)  -c src/BarreProg.cpp -o obj/BarreProg.o
 
 obj/Vec2D.o: src/Vec2D.cpp src/Vec2D.h 
 	g++ $(CFLAGS)  -c src/Vec2D.cpp -o obj/Vec2D.o

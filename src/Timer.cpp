@@ -11,7 +11,7 @@ using namespace std;
 Timer::Timer(){
     val = 60;
     valMin = 0;
-    valMax = 600000;
+    valMax = 10000;
     actifCompteur = true;
 }
 
@@ -31,6 +31,12 @@ void Timer::setActif(bool b){
     actifCompteur = b;
 }
 
+int Timer::getValMax() const
+{
+    return valMax;
+}
+
+
 
 void Timer::GameOver() {
     
@@ -43,11 +49,11 @@ void Timer::reinitialiser(){
     
 }
 
-int Timer::ecoulementTimer(){
+int Timer::ecoulementTimer() const{
     assert(actifCompteur==true);
     
     int temps=0;
     temps = (int(clock()) / 1000);
-    return temps;
+    return temps/1000;
  
 }
