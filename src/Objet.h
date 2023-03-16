@@ -1,6 +1,8 @@
 #ifndef _OBJET_H
 #define _OBJET_H
 #include "Vaisseau.h"
+#include "Vec2D.h"
+
 
 
 class Objet {
@@ -8,8 +10,7 @@ class Objet {
 
     int idObjet;
     bool actifObjet;
-    int posObjetX;
-    int posObjetY;
+    Vec2D posObjet;
     //Tache tacheObjet;
 
     public:
@@ -25,8 +26,8 @@ class Objet {
     //accesseurs
     int getIdObjet() const;
     bool getActifObjet() const;
-    int getPosObjetX() const;
-    int getPosObjetY() const;
+    //int getPosObjetX() ;
+    Vec2D getPosObjet()const ;
     //Tache getTacheObjet() const;
     //actions sur l'objet
 };

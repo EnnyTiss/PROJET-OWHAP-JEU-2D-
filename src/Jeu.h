@@ -15,7 +15,7 @@ private :
 	Perso p;
     Objet tabo[8];
     Timer timer;
-	
+
 
 public :
 
@@ -23,10 +23,11 @@ public :
 
     const Vaisseau& getVaisseau () const;                        //< \brief accesseur nécesseaire pour l'affichage
     const Perso& getPerso () const;                          //< \brief accesseur nécesseaire pour l'affichage
+    Objet& getObjet (int id); 
     Objet getObjet (int id) const; 
-    Objet& getObjet (int id);
-    Timer getTimer() const ;
-    Timer& getTimer();
+
+    Timer& getTimer (); 
+    Timer getTimer () const; 
 
     bool actionClavier(const char touche);   
     bool PersoPresDeObjet();       
@@ -37,8 +38,12 @@ inline const Vaisseau& Jeu::getVaisseau () const { return v; }         // du cod
 
 inline const Perso& Jeu::getPerso () const { return p; }
 
-inline Objet& Jeu::getObjet(int id) { return tabo[id]; }
+inline Objet& Jeu::getObjet(int id)  { return tabo[id]; }
+inline Objet Jeu::getObjet(int id) const { return tabo[id]; }
 
-inline Timer& Jeu::getTimer() {return timer;}
+inline Timer& Jeu::getTimer () {return timer;}
+inline Timer Jeu::getTimer () const {return timer;}
+
+
 
 #endif

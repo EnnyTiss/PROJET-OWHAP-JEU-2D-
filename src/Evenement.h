@@ -22,10 +22,6 @@ class Evenement {
 
     void setDejaActive(bool b);
 
-
-
-
-
 };
 
 #endif

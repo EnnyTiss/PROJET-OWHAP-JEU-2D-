@@ -1,24 +1,23 @@
 #include "Perso.h"
 
 Perso::Perso () {
-    
-	m_x = 5;
-	m_y = 16;
+	posPerso.x=5;
+	posPerso.y=16;
 }
 
 void Perso::haut (const Vaisseau & t) {
-	if (t.estPositionPersoValide(m_x-1,m_y)) m_x--;
+	if (t.estPositionPersoValide(posPerso.x-1,posPerso.y)) posPerso.x--;
 }
 
 void Perso::bas (const Vaisseau & t) {
-	if (t.estPositionPersoValide(m_x+1,m_y)) m_x++;
+	if (t.estPositionPersoValide(posPerso.x+1,posPerso.y)) posPerso.x++;
 }
 
 void Perso::droite (const Vaisseau & t) {
-	if (t.estPositionPersoValide(m_x,m_y+1)) m_y++;
+	if (t.estPositionPersoValide(posPerso.x,posPerso.y+1)) posPerso.y++;
 }
 
 void Perso::gauche(const Vaisseau & t) {
-	if (t.estPositionPersoValide(m_x,m_y-1)) m_y--;
+	if (t.estPositionPersoValide(posPerso.x,posPerso.y-1)) posPerso.y--;
 }
 

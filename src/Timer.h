@@ -22,8 +22,10 @@ class Timer {
         void setActif(bool b);
         int getValMin() const;
         int getValMax() const;
+
         void GameOver();
         int ecoulementTimer();
 };
+
 
 #endif
