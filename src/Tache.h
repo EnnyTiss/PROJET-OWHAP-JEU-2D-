@@ -5,21 +5,19 @@ class Tache {
       
     private:
     int idTache;
-    int dureeTache;
 
     public:
 //constructeurs/destructeur
     Tache();
-    Tache(int idT, int dureeT);
+    Tache(int idT);
     ~Tache();
-//mutateurs
-    void setDureeTache(int dureeT);
 //accesseurs
     int getIdTache() const;
-    int getDureeTache() const;
 //actions sur la tache
     void actionTache();
       
-}
+};
+
+inline int Tache::getIdTache () const { return idTache; }
 
 #endif
