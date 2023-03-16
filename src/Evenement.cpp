@@ -4,13 +4,11 @@
     Evenement::Evenement(){
         idEvent=0;
         timer=Timer();
-        dejaActive=false;
     }
 
     Evenement::Evenement(int id, Timer t, bool dejaAct){
         idEvent = id;
         timer = t;
-        dejaActive=dejaAct;
 
     }
 
@@ -22,9 +20,7 @@
         return timer;
     }
 
-    bool Evenement::getDejaActive() const{
-        return dejaActive;
-    }
+
 
     void Evenement::setDejaActive(bool b){
         

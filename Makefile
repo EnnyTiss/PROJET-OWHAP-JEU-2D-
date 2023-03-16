@@ -1,13 +1,11 @@
 EXEC_NAME =     bin/affichage 
 
-OBJ3 =  obj/main_txt.o obj/Vaisseau.o obj/txtJeuO.o  obj/winTxtO.o obj/Jeu.o obj/Perso.o obj/Objet.o obj/Vec2D.o obj/Timer.o obj/BarreProg.o
+OBJ3 =  obj/main_txt.o obj/Vaisseau.o obj/txtJeuO.o  obj/winTxtO.o obj/Jeu.o obj/Perso.o obj/Evenement.o obj/Objet.o obj/Vec2D.o obj/Timer.o obj/BarreProg.o obj/Etape.o
 CFLAGS = -Wall -ggdb
 
 
 	
-all: 
-	rm obj/* bin/* ; make $(EXEC_NAME) 
-#permet de faire le make clean et le make en même temps
+all: $(EXEC_NAME) 
 
 
 bin/affichage: $(OBJ3)
@@ -32,11 +30,17 @@ obj/Perso.o: src/Perso.cpp src/Perso.h src/Vec2D.h
 obj/Objet.o: src/Objet.cpp src/Objet.h src/Vec2D.h
 	g++ $(CFLAGS)  -c src/Objet.cpp -o obj/Objet.o
 
+obj/Evenement.o: src/Evenement.cpp src/Evenement.h 
+	g++ $(CFLAGS)  -c src/Evenement.cpp -o obj/Evenement.o
+
 obj/winTxtO.o: src/winTxtO.cpp src/winTxtO.h 
 	g++ $(CFLAGS)  -c src/winTxtO.cpp -o obj/winTxtO.o
 
 obj/Timer.o: src/Timer.cpp src/Timer.h 
 	g++ $(CFLAGS)  -c src/Timer.cpp -o obj/Timer.o
+
+obj/Etape.o: src/Etape.cpp src/Etape.h 
+	g++ $(CFLAGS)  -c src/Etape.cpp -o obj/Etape.o
 
 obj/BarreProg.o: src/BarreProg.cpp src/BarreProg.h 
 	g++ $(CFLAGS)  -c src/BarreProg.cpp -o obj/BarreProg.o

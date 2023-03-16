@@ -5,13 +5,12 @@
 #include "cassert"
 
 class Evenement {
-    public:
+    private:
 
     int idEvent;
     Timer timer;
-    bool dejaActive;
 
-    private:
+    public:
 
     Evenement();
     Evenement(int id, Timer t, bool dejaAct);

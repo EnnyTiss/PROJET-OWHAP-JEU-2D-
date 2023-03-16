@@ -33,7 +33,7 @@ void Timer::setActif(bool b){
 
 int Timer::getValMax() const
 {
-    return valMax;
+    return valMax*1000;
 }
 
 

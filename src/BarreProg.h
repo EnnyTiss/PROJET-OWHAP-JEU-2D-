@@ -4,8 +4,7 @@
 
 class BarreProg {
 private :
-int tempsfull;
-int tempsEtape;
+int temps;
 Timer timer;
 int taille;
 char tab[19];
@@ -13,19 +12,15 @@ char tab[19];
 
 public :
 BarreProg();
-int getTemps();
-int getTempsEtape ();
+BarreProg(int temps);
+
 int getNow() const;
 const int getTaille()const;
 unsigned char getC (const int x) const;
 
-
-
-
 };
 
-inline int BarreProg::getTemps() {return tempsfull;}
-inline int BarreProg::getTempsEtape() {return tempsEtape;}
+
 inline const int BarreProg::getTaille() const {return taille;}
 
 

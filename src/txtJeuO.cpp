@@ -51,12 +51,13 @@ void txtAff(WinTXT & win, const Jeu & jeu) {
 	
 
 	win.draw();
-	cout<<endl<<"Commandes : zqsd pour se dépalcer, m pour quitter, i pour intéragir"<<endl;
+	cout<<endl<<"Commandes : zqsd pour se déplacer, m pour quitter, i pour intéragir"<<endl;
 	cout<<endl<<"position perso :"<<jeu.getPerso().getPosPerso().x<<" "<<jeu.getPerso().getPosPerso().y<<endl;
 	if (jeu.getTimer().ecoulementTimer()<=jeu.getTimer().getValMax()){
-	cout<<endl<<endl<<endl<<"temps  :"<<jeu.getTimer().ecoulementTimer()<<endl;}
+	cout<<endl<<endl<<endl<<"temps restant  :"<<jeu.getTimer().getValMax()/1000-jeu.getTimer().ecoulementTimer()<<endl;}
 	else{jeu.getTimer().GameOver(); }
-	cout<<endl<<"barreprog temp: "<<jeu.getBarreProg().getNow();
+	cout<<endl<<"barreprog temps: "<<jeu.getBarreProg().getNow()<<endl;
+	if (jeu.getEtape().estEtape(jeu.getTimer())) {cout<<"c'est une étape";}
 	
 }
 

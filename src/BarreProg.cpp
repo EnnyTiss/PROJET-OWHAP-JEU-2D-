@@ -3,18 +3,37 @@
 
 BarreProg::BarreProg() 
 {
-    tempsfull=60;
-    tempsEtape=20;
-    taille=18;
-	const char tabX[19]= {
+    
+    taille=19;
+	const char tabX[20]= {
 
- "-----0-----0-----0",
+ "0-----0-----0-----0",
 
 	};
-    timer=Timer();
+    timer=Timer(0,0,10,true);
 
 
-	for(int x=0;x<19;x++)
+
+	for(int x=0;x<20;x++)
+		{BarreProg::tab[x]=tabX[x];
+		}
+
+}
+
+BarreProg::BarreProg(int temps) 
+{
+    
+    taille=18;
+	const char tabX[20]= {
+
+ "------0-----0-----0",
+
+	};
+    timer=Timer(0,0,temps,true);
+
+
+
+	for(int x=0;x<20;x++)
 		{BarreProg::tab[x]=tabX[x];
 		}
 
@@ -29,7 +48,7 @@ int BarreProg::getNow() const
 {
     int result;
    // result=10;
-    result = (timer.ecoulementTimer());//*taille*1000/timer.getValMax();
+    result = (timer.ecoulementTimer())*(taille*1000)/timer.getValMax();
 
     return result;
 }
