@@ -7,7 +7,7 @@
 
 class Etape {
     private:
-        Timer timer;
+    Timer timer;
     Evenement E1;
     Evenement E2;
     Evenement E3;
@@ -15,8 +15,12 @@ class Etape {
     public:
 
     Etape();
+    Etape(int temp);
+
     Evenement getEvenement(int i);
     bool estEtape(Timer t);
+    int getEtape();
+    Timer getTimerEtape();
 
 
 };

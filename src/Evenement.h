@@ -8,18 +8,18 @@ class Evenement {
     private:
 
     int idEvent;
-    Timer timer;
+    bool actif;
+    
 
     public:
 
     Evenement();
-    Evenement(int id, Timer t, bool dejaAct);
+    Evenement(int id,  bool dejaAct);
 
     int getIdEvent() const;
-    Timer getTimer() const;
-    bool getDejaActive() const;
+    bool getActif() const;
 
-    void setDejaActive(bool b);
+    void setActif(bool b);
 
 };
 

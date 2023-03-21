@@ -1,6 +1,6 @@
 EXEC_NAME =     bin/affichage 
 
-OBJ3 =  obj/main_txt.o obj/Vaisseau.o obj/txtJeuO.o  obj/winTxtO.o obj/Jeu.o obj/Perso.o obj/Evenement.o obj/Objet.o obj/Vec2D.o obj/Timer.o obj/BarreProg.o obj/Etape.o
+OBJ3 =  obj/main_txt.o obj/Vaisseau.o obj/txtJeuO.o  obj/winTxtO.o obj/Jeu.o obj/Perso.o obj/Evenement.o obj/Objet.o obj/Vec2D.o obj/Timer.o obj/BarreProg.o obj/Etape.o obj/Tache.o
 CFLAGS = -Wall -ggdb
 
 
@@ -41,6 +41,9 @@ obj/Timer.o: src/Timer.cpp src/Timer.h
 
 obj/Etape.o: src/Etape.cpp src/Etape.h 
 	g++ $(CFLAGS)  -c src/Etape.cpp -o obj/Etape.o
+
+obj/Tache.o: src/Tache.cpp src/Tache.h 
+	g++ $(CFLAGS)  -c src/Tache.cpp -o obj/Tache.o
 
 obj/BarreProg.o: src/BarreProg.cpp src/BarreProg.h 
 	g++ $(CFLAGS)  -c src/BarreProg.cpp -o obj/BarreProg.o

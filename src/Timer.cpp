@@ -11,7 +11,7 @@ using namespace std;
 Timer::Timer(){
     val = 60;
     valMin = 0;
-    valMax = 10000;
+    valMax = 10;
     actifCompteur = true;
 }
 

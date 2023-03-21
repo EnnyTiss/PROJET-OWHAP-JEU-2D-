@@ -5,7 +5,6 @@
 #include <unistd.h>
 #endif // WIN32
 #include "winTxtO.h"
-#include <iostream>
 #include "Jeu.h"
 
 using namespace std;
@@ -14,6 +13,7 @@ void txtAff(WinTXT & win, const Jeu & jeu) {
 
 
 	win.clear();
+	
 	
 
     // Affichage du décors, du perso et des évenements
@@ -52,12 +52,14 @@ void txtAff(WinTXT & win, const Jeu & jeu) {
 
 	win.draw();
 	cout<<endl<<"Commandes : zqsd pour se déplacer, m pour quitter, i pour intéragir"<<endl;
-	cout<<endl<<"position perso :"<<jeu.getPerso().getPosPerso().x<<" "<<jeu.getPerso().getPosPerso().y<<endl;
-	if (jeu.getTimer().ecoulementTimer()<=jeu.getTimer().getValMax()){
-	cout<<endl<<endl<<endl<<"temps restant  :"<<jeu.getTimer().getValMax()/1000-jeu.getTimer().ecoulementTimer()<<endl;}
+	//cout<<endl<<"position perso :"<<jeu.getPerso().getPosPerso().x<<" "<<jeu.getPerso().getPosPerso().y<<endl;
+	if (jeu.getTimer().ecoulementTimer()<=jeu.getTimer().getValMax()/1000)
+	{cout<<"temps restant  :"<<jeu.getTimer().getValMax()/1000-jeu.getTimer().ecoulementTimer()<<endl;
+	cout<<"barreprog temps: "<<jeu.getBarreProg().getNow()<<endl;}
 	else{jeu.getTimer().GameOver(); }
-	cout<<endl<<"barreprog temps: "<<jeu.getBarreProg().getNow()<<endl;
-	if (jeu.getEtape().estEtape(jeu.getTimer())) {cout<<"c'est une étape";}
+	
+	//if (jeu.getEtape().estEtape(jeu.getTimer())) {cout<<"c'est une étape";}
+	//else cout<<"c'est non étape";
 	
 }
 
@@ -65,11 +67,12 @@ void txtBoucle (Jeu & jeu) {
 	// Creation d'une nouvelle fenetre en mode texte
 	// => fenetre de dimension et position (WIDTH,HEIGHT,STARTX,STARTY)
     WinTXT ecran (100,100); ecran.clear(); ecran.draw(); // pour clear l'écran
-	WinTXT win (37,11);//jeu.getDimX(37),jeu.getDimY(10)
+	WinTXT win (70,14);//jeu.getDimX(37),jeu.getDimY(10)
 	bool ok = true;
 	int c;
 	do {
 	    txtAff(win,jeu);
+		jeu.NouvelleEtape();
 		c=win.getCh();
 		switch (c) {
 			case 'z':
@@ -86,6 +89,7 @@ void txtBoucle (Jeu & jeu) {
 				break;
 			case 'i':
 				jeu.actionClavier('i');
+				termClear();
 				break;
 			case 'm':
 				ok = false;

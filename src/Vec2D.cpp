@@ -26,36 +26,6 @@ Vec2D &Vec2D::operator=(const Vec2D &source)
 }
 
 
-Vec2D &Vec2D::operator+=(const Vec2D &c)
-{
-    x += c.x;
-    y += c.y;
-    return *this;
-}
-
-Vec2D &Vec2D::operator-=(const Vec2D &c)
-{
-    x -= c.x;
-    y -= c.y;
-    return *this;
-}
-
-Vec2D &Vec2D::operator*=(const Vec2D &c)
-{
-    double temp = x*c.x -y*c.y;
-    y = x*c.y + y*c.x;
-    x = temp;
-    return *this;
-}
-
-Vec2D &Vec2D::operator/=(const Vec2D &c)
-{
-    double norm = c.x*c.x + c.y*c.y;
-    double temp = (x*c.x + y*c.y) / norm;
-    y = (-x*c.y + y*c.x) / norm;
-    x = temp;
-    return *this;
-}
 
 bool Vec2D::operator== (Vec2D v1)
 {

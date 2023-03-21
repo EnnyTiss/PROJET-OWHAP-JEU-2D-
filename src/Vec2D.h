@@ -14,13 +14,6 @@ Vec2D(const Vec2D &source);
 Vec2D &operator=(const Vec2D &source);
 
 
-Vec2D &operator+=(const Vec2D &c);
-
-Vec2D &operator-=(const Vec2D &c);
-
-Vec2D &operator*=(const Vec2D &c);
-
-Vec2D &operator/=(const Vec2D &c);
 
 bool operator== (Vec2D v1);
 };

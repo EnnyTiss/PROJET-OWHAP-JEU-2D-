@@ -7,7 +7,7 @@ BarreProg::BarreProg()
     taille=19;
 	const char tabX[20]= {
 
- "0-----0-----0-----0",
+  "------0-----0-----0",
 
 	};
     timer=Timer(0,0,10,true);
@@ -15,7 +15,7 @@ BarreProg::BarreProg()
 
 
 	for(int x=0;x<20;x++)
-		{BarreProg::tab[x]=tabX[x];
+		{tab[x]=tabX[x];
 		}
 
 }
@@ -23,7 +23,7 @@ BarreProg::BarreProg()
 BarreProg::BarreProg(int temps) 
 {
     
-    taille=18;
+    taille=19;
 	const char tabX[20]= {
 
  "------0-----0-----0",
@@ -33,15 +33,15 @@ BarreProg::BarreProg(int temps)
 
 
 
-	for(int x=0;x<20;x++)
-		{BarreProg::tab[x]=tabX[x];
+	for(int x=0;x<21;x++)
+		{tab[x]=tabX[x];
 		}
 
 }
 
 unsigned char BarreProg::getC (const int x) const
 {
-	return BarreProg::tab[x];
+	return tab[x];
 }
 
 int BarreProg::getNow() const

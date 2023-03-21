@@ -26,7 +26,8 @@ Vaisseau::Vaisseau() {
 
 	for(int x=0;x<m_dimx;x++)
 		for(int y=0;y<m_dimy;y++)
-		{Vaisseau::tab[x][y]=tabX[x][y];
+		{
+			tab[x][y]=tabX[x][y];
 		}
 
 	
@@ -46,5 +47,5 @@ int Vaisseau::getDimY () const {	return m_dimy; }
 
 unsigned char Vaisseau::getXY (const int x, const int y) const
 {
-	return Vaisseau::tab[x][y];
+	return tab[x][y];
 }

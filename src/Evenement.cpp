@@ -1,14 +1,15 @@
 #include "Evenement.h"
 #include <iostream>
+using namespace std;
 
     Evenement::Evenement(){
         idEvent=0;
-        timer=Timer();
+        actif=false;
     }
 
-    Evenement::Evenement(int id, Timer t, bool dejaAct){
+    Evenement::Evenement(int id, bool dejaAct){
         idEvent = id;
-        timer = t;
+        actif=dejaAct;
 
     }
 
@@ -16,12 +17,14 @@
         return idEvent;
     }
 
-    Timer Evenement::getTimer() const{
-        return timer;
+    bool Evenement::getActif() const {
+        if (actif) return true;
+        else return false;
+
     }
 
 
 
-    void Evenement::setDejaActive(bool b){
-        
+    void Evenement::setActif(bool b){
+        actif=b;
     }
