@@ -20,7 +20,7 @@ BarreProg::BarreProg()
 
 }
 
-BarreProg::BarreProg(int temps) 
+BarreProg::BarreProg(int temps) //constructeur (avec le temps modifiable)
 {
     
     taille=19;
@@ -39,16 +39,16 @@ BarreProg::BarreProg(int temps)
 
 }
 
-unsigned char BarreProg::getC (const int x) const
+unsigned char BarreProg::getC (const int x) const // affiche le charactère numéro x à sa place
 {
 	return tab[x];
 }
 
-int BarreProg::getNow() const
+int BarreProg::getNow() const //sert à connaitre la position sur la barre à l'instant t
 {
     int result;
    // result=10;
-    result = (timer.ecoulementTimer())*(taille*1000)/timer.getValMax();
+    result = (timer.ecoulementTimer(timer.getdebut()))*(taille)/timer.getValMax();
 
     return result;
 }
