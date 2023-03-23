@@ -102,7 +102,7 @@ void Tache::Calcul(){  // résoudre un calcul simple
 
     do
     {
-        cout << "Combien vaut" << r1 << " + " << r2 << endl;
+        cout << "Combien vaut " << r1 << " + " << r2 << endl;
         cin >> c;
         r=r1 +r2;
         if (c == r)
@@ -178,19 +178,60 @@ void Tache::Question(){ // répondre à une question
 void Tache::RecopierMot(){ // saisir le mot affiché à l'écran
 string r;
 string c;
+ srand(time(0));
+ int random = rand() % 4;
     do{
         switch (difficulte){
             case 1:
-                cout << "Ecrire le mot arbre"<<endl;
-                r = "arbre";
+                switch (random)
+                {
+                    case 1:
+                    cout << "Ecrire : soleil"<<endl;
+                    r = "soleil"; break;
+                    case 2 :
+                    cout << "Ecrire : espace"<<endl;
+                    r = "espace"; break;  
+                    case 3:                  
+                    cout << "Ecrire : lune"<<endl;
+                    r = "lune"; break;
+                    case 4:
+                    cout << "Ecrire : mars"<<endl;
+                    r = "mars"; break;
+                }
                 break;
             case 2:
-                cout << "Ecrire le mot révolution" <<endl;
-                r = "révolution";
+                switch (random)
+                {
+                    case 1:
+                    cout << "Ecrire : vortex"<<endl;
+                    r = "vortex"; break;
+                    case 2 :
+                    cout << "Ecrire : planète"<<endl;
+                    r = "planète"; break;  
+                    case 3:                  
+                    cout << "Ecrire : éclipse"<<endl;
+                    r = "éclipse"; break;
+                    case 4:
+                    cout << "Ecrire : révolution"<<endl;
+                    r = "révolution"; break;
+                }
                 break;
             case 3:
-                cout << "Ecrire le mot anticonformiste"<<endl;
-                r = "anticonformiste";
+                switch (random)
+                {
+                    case 1:
+                    cout << "Ecrire : astéroide de glace"<<endl;
+                    r = "astéroide de glace"; break;
+                    case 2 :
+                    cout << "Ecrire : nébuleuse noir"<<endl;
+                    r = "nébuleuse noir"; break;  
+                    case 3:                  
+                    cout << "Ecrire : monde tellurique"<<endl;
+                    r = "monde tellurique"; break;
+                    case 4:
+                    cout << "Ecrire : rotation sidérale"<<endl;
+                    r = "rotation sidérale"; break;
+                }
                 break;
         }
         cin >> c;
@@ -210,16 +251,55 @@ string c;
     do{
         switch (difficulte){
             case 1:
-                cout << "Trouver la touche qui représente l'argent"<<endl;
-                r = "$";
+                switch (random)
+                {
+                    case 1:
+                    cout << "Je suis l'argent au USA"<<endl;
+                    r = "$"; break;
+                    case 2 :
+                    cout << "Je suis le symbole Modulo"<<endl;
+                    r = "%"; break;  
+                    case 3:                  
+                    cout << "Je suis un liquide vital"<<endl;
+                    r = "o"; break;
+                    case 4:
+                    cout << "Je suis entre le R et le T"<<endl;
+                    r = "s"; break;
+                }
                 break;
             case 2:
-                cout << "Trouver la touche qui représente l'infini de coté" <<endl;
-                r = "8";
+                switch (random)
+                {
+                    case 1:
+                    cout << "Je peut être des mers, filante ou à neutron"<<endl;
+                    r = "*"; break;
+                    case 2 :
+                    cout << "Je fini chaque "<<endl;
+                    r = "planète"; break;  
+                    case 3:                  
+                    cout << "Ecrire : éclipse"<<endl;
+                    r = "éclipse"; break;
+                    case 4:
+                    cout << "Ecrire : révolution"<<endl;
+                    r = "révolution"; break;
+                }
                 break;
             case 3:
-                cout << "Trouver la touche qui représente modulo"<<endl;
-                r = "%";
+                switch (random)
+                {
+                    case 1:
+                    cout << "Ecrire : astéroide de glace"<<endl;
+                    r = "astéroide de glace"; break;
+                    case 2 :
+                    cout << "Ecrire : nébuleuse noir"<<endl;
+                    r = "nébuleuse noir"; break;  
+                    case 3:                  
+                    cout << "Ecrire : monde tellurique"<<endl;
+                    r = "monde tellurique"; break;
+                    case 4:
+                    cout << "Ecrire : rotation sidérale"<<endl;
+                    r = "rotation sidérale"; break;
+                }
                 break;
         }
         cin >> c;
@@ -242,16 +322,16 @@ void Tache::Findevent(){
 void Tache::actionTache(int idT){ // appel d'une tâche spécifique selon l'ID
 switch (idT) {
 					case 0 :
-						Question();
-						break;
-					case 1 :
-						Combinaison();
-						break;
-					case 2 :
 						RecopierCode();
 						break;
+					case 1 :
+						AppuiTouche();
+						break;
+					case 2 :
+						Combinaison();
+						break;
 					case 3 :
-						Calcul();
+						Question();
 						break;
 					case 4 :
 						SpamTouche();
@@ -261,7 +341,7 @@ switch (idT) {
 						RecopierMot();
 						break;
 					case 6 :
-						AppuiTouche();
+						Calcul();
 						break;
 					case 7 :
 						Findevent();
