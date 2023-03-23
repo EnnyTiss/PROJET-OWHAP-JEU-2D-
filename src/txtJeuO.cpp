@@ -53,26 +53,31 @@ void txtAff(WinTXT & win, const Jeu & jeu) {
 	win.draw();
 	cout<<endl<<"Commandes : zqsd pour se déplacer, m pour quitter, i pour intéragir"<<endl;
 	//cout<<endl<<"position perso :"<<jeu.getPerso().getPosPerso().x<<" "<<jeu.getPerso().getPosPerso().y<<endl;
-	if (jeu.getTimer().ecoulementTimer()<=jeu.getTimer().getValMax()/1000)
-	{cout<<"temps restant  :"<<jeu.getTimer().getValMax()/1000-jeu.getTimer().ecoulementTimer()<<endl;
-	cout<<"barreprog temps: "<<jeu.getBarreProg().getNow()<<endl;}
-	else{jeu.getTimer().GameOver(); }
 	
+	cout<<"temps restant  :"<<jeu.getTimer().getValMax()-jeu.getTimer().ecoulementTimer(jeu.getTimer().getdebut())<<endl;
+	cout<<"barreprog temps: "<<jeu.getBarreProg().getNow()<<endl;
+
 	//if (jeu.getEtape().estEtape(jeu.getTimer())) {cout<<"c'est une étape";}
 	//else cout<<"c'est non étape";
+	if (jeu.getTimer().getValMax()-jeu.getTimer().ecoulementTimer(jeu.getTimer().getdebut())==9 )
+	{termClear();}
 	
 }
 
 void txtBoucle (Jeu & jeu) {
 	// Creation d'une nouvelle fenetre en mode texte
 	// => fenetre de dimension et position (WIDTH,HEIGHT,STARTX,STARTY)
-    WinTXT ecran (100,100); ecran.clear(); ecran.draw(); // pour clear l'écran
-	WinTXT win (70,14);//jeu.getDimX(37),jeu.getDimY(10)
+	WinTXT win (40,14);//jeu.getDimX(37),jeu.getDimY(10)
 	bool ok = true;
 	int c;
 	do {
+		
 	    txtAff(win,jeu);
+		
 		jeu.NouvelleEtape();
+		
+		
+		
 		c=win.getCh();
 		switch (c) {
 			case 'z':
@@ -88,8 +93,10 @@ void txtBoucle (Jeu & jeu) {
 				jeu.actionClavier('d');
 				break;
 			case 'i':
+				termClear();
 				jeu.actionClavier('i');
 				termClear();
+				
 				break;
 			case 'm':
 				ok = false;
