@@ -8,6 +8,7 @@
 #include "BarreProg.h"
 #include "Etape.h"
 #include "Tache.h"
+#include <time.h>
 
 
 
@@ -24,6 +25,7 @@ private :
     Tache tfacile;
     Tache tmoyen;
     Tache tdifficile;
+    time_t debut;
 
 
 
@@ -42,13 +44,14 @@ public :
     Tache getTachemoyen () const;                          //< \brief accesseur nécesseaire pour l'affichage
     Tache getTachedifficile () const;                          //< \brief accesseur nécesseaire pour l'affichage
 
-
     Timer& getTimer (); 
     Timer getTimer () const; 
     void NouvelleEtape();
     bool actionClavier(const char touche);   
     bool PersoPresDeObjet();       
     void interationdemande();
+    bool toutfini();
+    void GameOver();
 };
 
 inline const Vaisseau& Jeu::getVaisseau () const { return v; }         // du code court comme ca doit être en inline
@@ -58,7 +61,6 @@ inline  Etape Jeu::getEtape () const { return E; }
 inline  Tache Jeu::getTachefacile () const { return tfacile; }
 inline  Tache Jeu::getTachemoyen () const { return tmoyen; }
 inline  Tache Jeu::getTachedifficile () const { return tdifficile; }
-
 
 inline Objet& Jeu::getObjet(int id)  { return tabo[id]; }
 inline Objet Jeu::getObjet(int id) const { return tabo[id]; }
