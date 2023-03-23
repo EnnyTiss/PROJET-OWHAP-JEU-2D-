@@ -1,5 +1,6 @@
 #include "Jeu.h"
 #include <iostream>
+#include <unistd.h>
 using namespace std;
 
 Jeu::Jeu() 
@@ -59,8 +60,7 @@ void Jeu::interationdemande(){
 			for (int j=yP-1; j<yP+2; j++){
 				assert(getVaisseau().getXY(i,j)!= 'P');
 				if (getVaisseau().getXY(i,j)!='.' && getVaisseau().getXY(i,j)!='!' && getVaisseau().getXY(i,j) != '#' && getVaisseau().getXY(i,j) != ' '){
-				 int a=i;
-				 int b=j;
+
 				 int num = (int) getVaisseau().getXY(i,j);
 				 num=num-'0';
 				 
@@ -104,18 +104,19 @@ bool Jeu::actionClavier (const char touche) {
 }
 
 
-void Jeu::NouvelleEtape()
+void Jeu::NouvelleEtape() //vérfie en boucle si une nouvelle étape doit se lancer
 {
-	if (getTimer().ecoulementTimer()==0)
+	if (getTimer().ecoulementTimer(getTimer().getdebut())==1)
 	{
+
 		switch(E.getEvenement(1).getIdEvent()) {
 			case 1 : getObjet(4).setActifObjet(true); getObjet(5).setActifObjet(true); getObjet(7).setActifObjet(true); break; 
 			//attaque de pirate !
-			case 2 : getObjet(0).setActifObjet(true); getObjet(6).setActifObjet(true); getObjet(7).setActifObjet(true);break; 
+			case 2 : getObjet(0).setActifObjet(true); getObjet(1).setActifObjet(true); getObjet(7).setActifObjet(true);break; 
 			//problème moteur !
 			case 3 : getObjet(2).setActifObjet(true); getObjet(1).setActifObjet(true); getObjet(7).setActifObjet(true);break; 
 			//moteur sans energie !
-			case 4 : getObjet(5).setActifObjet(true); getObjet(1).setActifObjet(true); getObjet(7).setActifObjet(true);break; 
+			case 4 : getObjet(5).setActifObjet(true); getObjet(0).setActifObjet(true); getObjet(7).setActifObjet(true);break; 
 			//Super Nova ! fuir !
 			case 5 : getObjet(5).setActifObjet(true); getObjet(6).setActifObjet(true); getObjet(7).setActifObjet(true);break; 
 			//champ d'astéroide !
@@ -129,19 +130,25 @@ void Jeu::NouvelleEtape()
 			//problème pour les humains !
 			case 0 : getObjet(6).setActifObjet(true);  getObjet(7).setActifObjet(true);break; 
 			//esquive !
-		}
-	}
 
-	if (getTimer().ecoulementTimer()==getTimer().getValMax()/1000*1/3)
+
+		}
+
+	}
+	
+	if (getTimer().ecoulementTimer(getTimer().getdebut())==getTimer().getValMax()*1/3)
 	{
+		
+		if (toutfini()) {
+		sleep(1);
 		switch(E.getEvenement(2).getIdEvent()) {
 			case 1 : getObjet(4).setActifObjet(true); getObjet(5).setActifObjet(true); getObjet(7).setActifObjet(true); break; 
 			//attaque de pirate !
-			case 2 : getObjet(0).setActifObjet(true); getObjet(6).setActifObjet(true); getObjet(7).setActifObjet(true);break; 
+			case 2 : getObjet(0).setActifObjet(true); getObjet(1).setActifObjet(true); getObjet(7).setActifObjet(true);break; 
 			//problème moteur !
 			case 3 : getObjet(2).setActifObjet(true); getObjet(1).setActifObjet(true); getObjet(7).setActifObjet(true);break; 
 			//moteur sans energie !
-			case 4 : getObjet(5).setActifObjet(true); getObjet(1).setActifObjet(true); getObjet(7).setActifObjet(true);break; 
+			case 4 : getObjet(5).setActifObjet(true); getObjet(0).setActifObjet(true); getObjet(7).setActifObjet(true);break; 
 			//Super Nova ! fuir !
 			case 5 : getObjet(5).setActifObjet(true); getObjet(6).setActifObjet(true); getObjet(7).setActifObjet(true);break; 
 			//champ d'astéroide !
@@ -155,21 +162,23 @@ void Jeu::NouvelleEtape()
 			//problème pour les humains !
 			case 0 : getObjet(6).setActifObjet(true);  getObjet(7).setActifObjet(true);break; 
 			//esquive !
-
-
 		}
+		}
+		else  {GameOver();}
 	}
 
-	if (getTimer().ecoulementTimer()==getTimer().getValMax()/1000*2/3)
+	if (getTimer().ecoulementTimer(getTimer().getdebut())==getTimer().getValMax()*2/3)
 	{
+		if (toutfini()) { 			
+		sleep(1);
 		switch(E.getEvenement(3).getIdEvent()) {
 			case 1 : getObjet(4).setActifObjet(true); getObjet(5).setActifObjet(true); getObjet(7).setActifObjet(true); break; 
 			//attaque de pirate !
-			case 2 : getObjet(0).setActifObjet(true); getObjet(6).setActifObjet(true); getObjet(7).setActifObjet(true);break; 
+			case 2 : getObjet(0).setActifObjet(true); getObjet(1).setActifObjet(true); getObjet(7).setActifObjet(true);break; 
 			//problème moteur !
 			case 3 : getObjet(2).setActifObjet(true); getObjet(1).setActifObjet(true); getObjet(7).setActifObjet(true);break; 
 			//moteur sans energie !
-			case 4 : getObjet(5).setActifObjet(true); getObjet(1).setActifObjet(true); getObjet(7).setActifObjet(true);break; 
+			case 4 : getObjet(5).setActifObjet(true); getObjet(0).setActifObjet(true); getObjet(7).setActifObjet(true);break; 
 			//Super Nova ! fuir !
 			case 5 : getObjet(5).setActifObjet(true); getObjet(6).setActifObjet(true); getObjet(7).setActifObjet(true);break; 
 			//champ d'astéroide !
@@ -186,8 +195,32 @@ void Jeu::NouvelleEtape()
 
 
 		}
+		}
+		else  {GameOver();}
+	}
+	if (getTimer().ecoulementTimer(getTimer().getdebut())==getTimer().getValMax())
+	{
+		GameOver();
 	}
 
+
+}
+
+bool Jeu::toutfini() //vérifie si tout les objets ont bien été résolu
+{
+if (getObjet(0).getActifObjet() || getObjet(1).getActifObjet() || getObjet(2).getActifObjet() ||
+getObjet(3).getActifObjet() || getObjet(4).getActifObjet() || getObjet(5).getActifObjet() ||
+getObjet(5).getActifObjet() || getObjet(6).getActifObjet())
+{return false;}
+else {return true;}
+
+
+}
+
+
+void Jeu::GameOver() //s'active en cas de perte au jeu
+{
+ cout<<"C'est perdu :,("<<endl;
 
 }
 
