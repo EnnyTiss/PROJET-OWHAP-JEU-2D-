@@ -21,7 +21,7 @@
 
 
 
-    Evenement Etape::getEvenement(int i)
+    Evenement Etape::getEvenement(int i) //retourne l'évenement de difficulté i
     {
         if (i==1) {return E1;}
         if (i==2) {return E2;}
@@ -30,24 +30,24 @@
 
     }
 
-    bool Etape::estEtape(Timer t)
+    bool Etape::estEtape(Timer t) //confirme si il y a un nouveau evenement à l'instant t
     {
-        if (t.ecoulementTimer()==t.getValMax()/1000*1/3) {return true;}
-        if (t.ecoulementTimer()==t.getValMax()/1000*2/3) {return true;}
+        if (t.ecoulementTimer(t.getdebut())==t.getValMax()*1/3) {return true;}
+        if (t.ecoulementTimer(t.getdebut())==t.getValMax()*2/3) {return true;}
         //if (timer.ecoulementTimer()==0) {return true;}
         else return false;
     }
 
-    int Etape::getEtape()
+    int Etape::getEtape() // retourne le numéro de l'étape (première, intermédaire, finale)
     {
         int etape;
-				 if (getTimerEtape().ecoulementTimer()<=(getTimerEtape().getValMax()/1000)*1/3) {etape=1;}
-				 if (getTimerEtape().ecoulementTimer()<=(getTimerEtape().getValMax()/1000)*2/3 && getTimerEtape().ecoulementTimer()>=(getTimerEtape().getValMax()/1000)*1/3) {etape=2;}
-				 if (getTimerEtape().ecoulementTimer()>=(getTimerEtape().getValMax()/1000)*2/3) {etape=3;}
+				 if (getTimerEtape().ecoulementTimer(getTimerEtape().getdebut())<=(getTimerEtape().getValMax())*1/3) {etape=1;}
+				 if (timer.ecoulementTimer(getTimerEtape().getdebut())<(getTimerEtape().getValMax())*2/3 && getTimerEtape().ecoulementTimer(getTimerEtape().getdebut())>(getTimerEtape().getValMax())*1/3) {etape=2;}
+				 if (timer.ecoulementTimer(getTimerEtape().getdebut())>=(getTimerEtape().getValMax())*2/3) {etape=3;}
         return etape;
     }
 
-    Timer Etape::getTimerEtape()
+    Timer Etape::getTimerEtape() //retourne le timer spécifique pour les étapes (= timer globale)
     {
         return timer;
     }
