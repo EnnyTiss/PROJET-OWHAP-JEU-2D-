@@ -2,6 +2,8 @@
 #define _COMPTEREBOURS_H
 
 #include "cassert"
+#include <time.h>
+
 
 class Timer {
     private:
@@ -10,19 +12,18 @@ class Timer {
         int valMin;
         int valMax;
         bool actifCompteur;
+        int debut;
 
     public:
 
         Timer();
         Timer(int val, int valMin, int valMax, bool actifCompteur);
-//+ incrementer(): bool
-//+ decrementer(): bool
         void reinitialiser();
         void setVal(int v);
         void setActif(bool b);
         int getValMax() const;
-        void GameOver();
-        int ecoulementTimer() const;
+        int getdebut() const;
+        int ecoulementTimer(int debut) const;
 };
 
 
