@@ -1,4 +1,3 @@
-#include "Timer.h"
 #include <cassert>
 #include <iostream>
 #include <time.h>
@@ -13,6 +12,7 @@ Timer::Timer(){
     valMin = 0;
     valMax = 10;
     actifCompteur = true;
+    debut =0;
 }
 
 Timer::Timer(int v, int vMin, int vMax, bool actif){
@@ -20,6 +20,7 @@ Timer::Timer(int v, int vMin, int vMax, bool actif){
     valMin = vMin;
     valMax = vMax; 
     actifCompteur = actif;
+    debut=int (time(nullptr));
 }
 
 void Timer::setVal(int v){
@@ -27,33 +28,34 @@ void Timer::setVal(int v){
 }
 
 void Timer::setActif(bool b){
-    assert(actifCompteur != b);
     actifCompteur = b;
 }
 
 int Timer::getValMax() const
 {
-    return valMax*1000;
+    return valMax;
+}
+
+int Timer::getdebut() const
+{
+    return debut;
 }
 
 
 
-void Timer::GameOver() {
-    
-    setActif(false);
-    cout<<"Temps écoulé, vous avez perdu ! "<<endl;
-}
+
+
 
 void Timer::reinitialiser(){
     setActif(true);
     
 }
 
-int Timer::ecoulementTimer() const{
-    assert(actifCompteur==true);
-    
-    int temps=0;
-    temps = (int(clock()) / 1000);
-    return temps/1000;
- 
+
+int Timer::ecoulementTimer(int debut) const
+{
+    int t =time(nullptr)-debut;
+    float temps = int(t);
+    return temps;
+
 }
