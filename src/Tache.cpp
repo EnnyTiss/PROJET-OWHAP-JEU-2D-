@@ -20,26 +20,67 @@ Tache::Tache(int diff)
 
 void Tache::Combinaison(){ // saisie combinaison de touches
     
-    
+    srand(time(0));
+    int f1=rand() %4;
+     srand(time(0)+9);
+    int f2=rand() %4;
+     srand(time(0)+5);
+    int f3=rand() %4;
+     srand(time(0)+111);
+    int f4=rand() %4;
+    string f1c;
+    switch (f1){
+        case 1: f1c="z";break;
+        case 2: f1c="s";break;
+        case 3: f1c="q";break;
+        case 0: f1c="d";break;
+    }
+    string f2c;
+    switch (f2){
+        case 1: f2c="z";break;
+        case 2: f2c="s";break;
+        case 3: f2c="q";break;
+        case 0: f2c="d";break;
+    }
+    string f3c;
+    switch (f3){
+        case 1: f3c="z";break;
+        case 2: f3c="s";break;
+        case 3: f3c="q";break;
+        case 0: f3c="d";break;
+    }
+    string f4c;
+    switch (f4){
+        case 1: f4c="z";break;
+        case 2: f4c="s";break;
+        case 3: f4c="q";break;
+        case 0: f4c="d";break;
+    }
+
+
+
+
+
     string r;
     string c;
     do{
         switch (difficulte){
             case 1:
-                cout<<"Appuyez sur la combinaison: Z, S"<<endl;
-                r = "zs";
+                cout<<"Appuyez sur la combinaison: "<<f1c<<f2c<<endl;
+                cout<<f1<<f2<<f3<<f4;
+                r = f1c+f2c;
                 break;
             case 2:
-                cout<<"Appuyez sur la combinaison: Z,Q,D,S"<<endl;
-                r = "zqds";break;
+                cout<<"Appuyez sur la combinaison: "<<f1c<<f2c<<f3c<<f4c<<endl;
+                r = f1c+f2c+f3c+f4c;break;
             case 3:
-                cout<<"Appuyez sur la combinaison: S,Z,D,Q,Z,S"<<endl;
-                r = "szdqzs";break;
+                cout<<"Appuyez sur la combinaison:"<<f4c<<f1c<<f2c<<f3c<<f4c<<f1c<<endl;
+                r = f4c+f1c+f2c+f3c+f4c+f1c;break;
         }
         cin >> c;
         if (c == r)
         {
-            cout<<"Correct !"<<endl;
+        cout<<"Correct !"<<endl;
         }
         else
         {
@@ -278,10 +319,10 @@ int random = rand()%4;
                     cout << "Ecrire : nébuleuse"<<endl;
                     r = "nébuleuse"; break;  
                     case 3:                  
-                    cout << "Ecrire :tellurique"<<endl;
+                    cout << "Ecrire : tellurique"<<endl;
                     r = "tellurique"; break;
                     case 0:
-                    cout << "Ecrire :sidérale"<<endl;
+                    cout << "Ecrire : sidérale"<<endl;
                     r = "sidérale"; break;
                 }
                 break;

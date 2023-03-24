@@ -52,6 +52,8 @@ public :
     void interationdemande();
     bool toutfini();
     void GameOver();
+    void Victoire();
+
 };
 
 inline const Vaisseau& Jeu::getVaisseau () const { return v; }         // du code court comme ca doit être en inline

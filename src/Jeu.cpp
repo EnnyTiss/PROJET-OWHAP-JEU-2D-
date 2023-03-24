@@ -198,9 +198,10 @@ void Jeu::NouvelleEtape() //vérfie en boucle si une nouvelle étape doit se lan
 		}
 		else  {GameOver();}
 	}
-	if (getTimer().ecoulementTimer(getTimer().getdebut())==getTimer().getValMax())
+	if (toutfini() && getTimer().ecoulementTimer(getTimer().getdebut())==getTimer().getValMax())
 	{
-		GameOver();
+		Victoire();
+		getTimer().setActif(false);
 	}
 
 
@@ -221,6 +222,12 @@ else {return true;}
 void Jeu::GameOver() //s'active en cas de perte au jeu
 {
  cout<<"C'est perdu :,("<<endl;
+
+}
+
+void Jeu::Victoire() //s'active en cas de perte au jeu
+{
+ cout<<"C'est gagné ;)"<<endl;
 
 }
 

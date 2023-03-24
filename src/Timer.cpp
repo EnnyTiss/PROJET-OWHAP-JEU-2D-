@@ -54,8 +54,10 @@ void Timer::reinitialiser(){
 
 int Timer::ecoulementTimer(int debut) const
 {
+    
     int t =time(nullptr)-debut;
     float temps = int(t);
+    if (actifCompteur==false) {temps=666;}
     return temps;
 
 }
