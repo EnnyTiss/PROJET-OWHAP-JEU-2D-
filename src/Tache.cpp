@@ -375,8 +375,8 @@ int random = rand() % 4;
                     cout << "Je suis bu par les anglais"<<endl;
                     r = "t"; break;
                     case 0:
-                    cout << "Je suis beaucoup de rire"<<endl;
-                    r = "lol"; break;
+                    cout << "Je sert à couper des arbres"<<endl;
+                    r = "h"; break;
                 }
                 break;
             case 3:
@@ -392,8 +392,8 @@ int random = rand() % 4;
                     cout << "Je suis le o et le e "<<endl;
                     r = "œ"; break;
                     case 0:
-                    cout << "Je sert à couper des arbres"<<endl;
-                    r = "h"; break;
+                    cout << "Je suis un a dans un o"<<endl;
+                    r = "@"; break;
                 }
                 break;
         }
@@ -410,9 +410,9 @@ int random = rand() % 4;
 }
 
 void Tache::Findevent(){
-    cout<<"bien ouej"<<endl;
-
+cout<<"bien ouej"<<endl;
 }
+
 
 void Tache::actionTache(int idT){ // appel d'une tâche spécifique selon l'ID
 switch (idT) {

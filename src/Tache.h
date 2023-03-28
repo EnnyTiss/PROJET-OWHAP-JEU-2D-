@@ -1,6 +1,7 @@
 #ifndef _TACHE_H
 #define _TACHE_H
 #include <cassert>
+
 class Tache {
       
     private:

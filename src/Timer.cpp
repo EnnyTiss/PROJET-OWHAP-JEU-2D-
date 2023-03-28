@@ -13,6 +13,7 @@ Timer::Timer(){
     valMax = 10;
     actifCompteur = true;
     debut =0;
+    decalage=0;
 }
 
 Timer::Timer(int v, int vMin, int vMax, bool actif){
@@ -21,10 +22,23 @@ Timer::Timer(int v, int vMin, int vMax, bool actif){
     valMax = vMax; 
     actifCompteur = actif;
     debut=int (time(nullptr));
+    decalage=0;
 }
 
 void Timer::setVal(int v){
     val = v;
+}
+
+void Timer::setDecalage(int v){
+    decalage = decalage+v;
+}
+
+bool Timer::getActif() const{
+    return actifCompteur;
+}
+
+int Timer::getDecalage() const{
+    return decalage;
 }
 
 void Timer::setActif(bool b){
@@ -48,6 +62,8 @@ int Timer::getdebut() const
 
 void Timer::reinitialiser(){
     setActif(true);
+    setDecalage(0);
+    setVal(60);
     
 }
 

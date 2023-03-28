@@ -13,6 +13,7 @@ class Timer {
         int valMax;
         bool actifCompteur;
         int debut;
+        int decalage;
 
     public:
 
@@ -24,6 +25,9 @@ class Timer {
         int getValMax() const;
         int getdebut() const;
         int ecoulementTimer(int debut) const;
+        int getDecalage() const;
+        void setDecalage(int v);
+        bool getActif() const;
 };
 
 

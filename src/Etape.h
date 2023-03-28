@@ -19,7 +19,7 @@ class Etape {
 
     Evenement getEvenement(int i);
     bool estEtape(Timer t);
-    int getEtape();
+    int getEtapenum();
     Timer getTimerEtape();
 
 

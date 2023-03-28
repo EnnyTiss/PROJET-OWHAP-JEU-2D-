@@ -38,7 +38,7 @@
         else return false;
     }
 
-    int Etape::getEtape() // retourne le numéro de l'étape (première, intermédaire, finale)
+    int Etape::getEtapenum() // retourne le numéro de l'étape (première, intermédaire, finale)
     {
         int etape;
 				 if (getTimerEtape().ecoulementTimer(getTimerEtape().getdebut())<=(getTimerEtape().getValMax())*1/3) {etape=1;}

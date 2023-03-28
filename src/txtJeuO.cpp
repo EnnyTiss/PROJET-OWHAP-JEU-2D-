@@ -51,14 +51,10 @@ void txtAff(WinTXT & win, const Jeu & jeu) {
 	
 
 	win.draw();
-	cout<<endl<<"Commandes : zqsd pour se déplacer, m pour quitter, i pour intéragir"<<endl;
-	//cout<<endl<<"position perso :"<<jeu.getPerso().getPosPerso().x<<" "<<jeu.getPerso().getPosPerso().y<<endl;
-	
+	cout<<"Commandes : zqsd pour se déplacer, m pour quitter, i pour intéragir"<<endl;	
 	cout<<"temps restant  :"<<jeu.getTimer().getValMax()-jeu.getTimer().ecoulementTimer(jeu.getTimer().getdebut())<<endl;
 	cout<<"barreprog temps: "<<jeu.getBarreProg().getNow()<<endl;
 
-	//if (jeu.getEtape().estEtape(jeu.getTimer())) {cout<<"c'est une étape";}
-	//else cout<<"c'est non étape";
 	if (jeu.getTimer().getValMax()-jeu.getTimer().ecoulementTimer(jeu.getTimer().getdebut())==9 )
 	{termClear();}
 	
@@ -71,13 +67,13 @@ void txtBoucle (Jeu & jeu) {
 	bool ok = true;
 	int c;
 	do {
-		
 	    txtAff(win,jeu);
 		
 		jeu.NouvelleEtape();
 		
 		
-		
+		 int Etapedebut = jeu.getEtape().getEtapenum();
+
 		c=win.getCh();
 		switch (c) {
 			case 'z':
@@ -96,7 +92,7 @@ void txtBoucle (Jeu & jeu) {
 				termClear();
 				jeu.actionClavier('i');
 				termClear();
-				
+				if (Etapedebut!=jeu.getEtape().getEtapenum()) {jeu.GameOver();}
 				break;
 			case 'm':
 				ok = false;

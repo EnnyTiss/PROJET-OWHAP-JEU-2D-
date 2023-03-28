@@ -46,9 +46,10 @@ unsigned char BarreProg::getC (const int x) const // affiche le charactère num�
 
 int BarreProg::getNow() const //sert à connaitre la position sur la barre à l'instant t
 {
-    int result;
+    int result =666;
    // result=10;
-    result = (timer.ecoulementTimer(timer.getdebut()))*(taille)/timer.getValMax();
+   if (timer.getActif())
+    {result = (timer.ecoulementTimer(timer.getdebut()))*(taille)/timer.getValMax();}
 
     return result;
 }

@@ -17,11 +17,13 @@ BarreProg(int temps);
 int getNow() const;
 const int getTaille()const;
 unsigned char getC (const int x) const;
+Timer getTimerBR() const;
 
 };
 
 
 inline const int BarreProg::getTaille() const {return taille;}
+inline Timer BarreProg::getTimerBR() const {return timer;}
 
 
 

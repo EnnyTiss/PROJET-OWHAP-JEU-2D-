@@ -64,12 +64,12 @@ void Jeu::interationdemande(){
 				 int num = (int) getVaisseau().getXY(i,j);
 				 num=num-'0';
 				 
-
-				 switch (E.getEtape()){
+				 switch (E.getEtapenum()){
 			
 				 case 1 : getTachefacile().actionTache(num); break; 
 				 case 2 : getTachemoyen().actionTache(num); break; 
 				 case 3 : getTachedifficile().actionTache(num);break;}
+				 
 				 getObjet(num).setActifObjet(false);
 				 
 				}
@@ -135,12 +135,14 @@ void Jeu::NouvelleEtape() //vérfie en boucle si une nouvelle étape doit se lan
 		}
 
 	}
-	
 	if (getTimer().ecoulementTimer(getTimer().getdebut())==getTimer().getValMax()*1/3)
+	{if (!toutfini()) 
+	{ GameOver(); }}
+
+	if (getTimer().ecoulementTimer(getTimer().getdebut())==1+getTimer().getValMax()*1/3)
 	{
 		
 		if (toutfini()) {
-		sleep(1);
 		switch(E.getEvenement(2).getIdEvent()) {
 			case 1 : getObjet(4).setActifObjet(true); getObjet(5).setActifObjet(true); getObjet(7).setActifObjet(true); break; 
 			//attaque de pirate !
@@ -164,13 +166,15 @@ void Jeu::NouvelleEtape() //vérfie en boucle si une nouvelle étape doit se lan
 			//esquive !
 		}
 		}
-		else  {GameOver();}
-	}
 
+	}
 	if (getTimer().ecoulementTimer(getTimer().getdebut())==getTimer().getValMax()*2/3)
+	{if (!toutfini()) 
+	{ GameOver(); }}
+
+	if (getTimer().ecoulementTimer(getTimer().getdebut())==1+getTimer().getValMax()*2/3)
 	{
 		if (toutfini()) { 			
-		sleep(1);
 		switch(E.getEvenement(3).getIdEvent()) {
 			case 1 : getObjet(4).setActifObjet(true); getObjet(5).setActifObjet(true); getObjet(7).setActifObjet(true); break; 
 			//attaque de pirate !
@@ -196,12 +200,16 @@ void Jeu::NouvelleEtape() //vérfie en boucle si une nouvelle étape doit se lan
 
 		}
 		}
-		else  {GameOver();}
 	}
+
 	if (toutfini() && getTimer().ecoulementTimer(getTimer().getdebut())==getTimer().getValMax())
 	{
-		Victoire();
-		getTimer().setActif(false);
+		 Victoire();
+	}
+
+	if (!toutfini() && getTimer().ecoulementTimer(getTimer().getdebut())!=666 && getTimer().ecoulementTimer(getTimer().getdebut())>getTimer().getValMax())
+	{
+		 GameOver();
 	}
 
 
@@ -221,13 +229,19 @@ else {return true;}
 
 void Jeu::GameOver() //s'active en cas de perte au jeu
 {
- cout<<"C'est perdu :,("<<endl;
+ cout<<endl<<"C'est perdu"<<endl;
+ getTimer().setActif(false);
+ getBarreProg().getTimerBR().setActif(false);
+
 
 }
 
-void Jeu::Victoire() //s'active en cas de perte au jeu
+void Jeu::Victoire() //s'active en cas de victoire au jeu
 {
  cout<<"C'est gagné ;)"<<endl;
+getTimer().setActif(false);
+ getBarreProg().getTimerBR().setActif(false);
+
 
 }
 
