@@ -10,7 +10,7 @@ BarreProg::BarreProg()
   "------0-----0-----0",
 
 	};
-    timer=Timer(0,0,10,true);
+    timerBR=Timer(0,0,10,true);
 
 
 
@@ -29,7 +29,7 @@ BarreProg::BarreProg(int temps) //constructeur (avec le temps modifiable)
  "------0-----0-----0",
 
 	};
-    timer=Timer(0,0,temps,true);
+    timerBR=Timer(0,0,temps,true);
 
 
 
@@ -46,10 +46,9 @@ unsigned char BarreProg::getC (const int x) const // affiche le charactère num�
 
 int BarreProg::getNow() const //sert à connaitre la position sur la barre à l'instant t
 {
-    int result =666;
-   // result=10;
-   if (timer.getActif())
-    {result = (timer.ecoulementTimer(timer.getdebut()))*(taille)/timer.getValMax();}
+    int result =777;
+   if (timerBR.getActif())
+    {result = (timerBR.ecoulementTimer(timerBR.getdebut()))*(taille)/timerBR.getValMax();}
 
     return result;
 }

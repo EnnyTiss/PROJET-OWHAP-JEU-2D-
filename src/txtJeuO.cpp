@@ -51,7 +51,7 @@ void txtAff(WinTXT & win, const Jeu & jeu) {
 	
 
 	win.draw();
-	cout<<"Commandes : zqsd pour se déplacer, m pour quitter, i pour intéragir"<<endl;	
+	cout<<endl<<"Commandes : zqsd pour se déplacer, m pour quitter, i pour intéragir"<<endl;	
 	cout<<"temps restant  :"<<jeu.getTimer().getValMax()-jeu.getTimer().ecoulementTimer(jeu.getTimer().getdebut())<<endl;
 	cout<<"barreprog temps: "<<jeu.getBarreProg().getNow()<<endl;
 
@@ -97,6 +97,7 @@ void txtBoucle (Jeu & jeu) {
 			case 'm':
 				ok = false;
 				break;
+			case 'n': jeu.actionClavier('n'); break;
 			}
 			
 		} while (ok);

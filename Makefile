@@ -1,4 +1,4 @@
-EXEC_NAME = bin/affichage bin/affichageGraph
+EXEC_NAME = bin/txt bin/sdl
 
 OBJ3 =  obj/main_txt.o obj/Vaisseau.o obj/txtJeuO.o  obj/winTxtO.o obj/Jeu.o obj/Perso.o obj/Evenement.o obj/Objet.o obj/Vec2D.o obj/Timer.o obj/BarreProg.o obj/Etape.o obj/Tache.o
 OBJ4 = 	obj/main_graph.o obj/Vaisseau.o obj/graphJeuO.o obj/Jeu.o obj/Perso.o obj/Evenement.o obj/Objet.o obj/Vec2D.o obj/Timer.o obj/BarreProg.o obj/Etape.o obj/Tache.o
@@ -9,11 +9,11 @@ LIBS = -lSDL2 -lSDL2_image
 all: $(EXEC_NAME) 
 
 
-bin/affichage: $(OBJ3)
-	g++ $(OBJ3) -o bin/affichage
+bin/txt: $(OBJ3)
+	g++ $(OBJ3) -o bin/txt
 
-bin/affichageGraph: $(OBJ4)
-	g++ $(OBJ4) -o bin/affichageGraph $(LIBS) 
+bin/sdl: $(OBJ4)
+	g++ $(OBJ4) -o bin/sdl $(LIBS) 
 
 obj/main_txt.o: src/main_txt.cpp src/Jeu.h src/winTxtO.h src/txtJeuO.h
 	g++ $(CFLAGS)  -c src/main_txt.cpp -o obj/main_txt.o

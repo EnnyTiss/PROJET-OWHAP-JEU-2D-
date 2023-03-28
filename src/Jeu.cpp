@@ -7,9 +7,9 @@ Jeu::Jeu()
 {
 	v=Vaisseau(); 
 	p=Perso();
-	tabo[0]= Objet();tabo[0].setObjet(0,false,1,1);
+	tabo[0]= Objet();tabo[0].setObjet(0,true,1,1);
 	tabo[1]= Objet();tabo[1].setObjet(1,false,8,1); 
-	tabo[2]= Objet();tabo[2].setObjet(2,false,8,10);
+	tabo[2]= Objet();tabo[2].setObjet(2,true,8,10);
 	tabo[3]= Objet();tabo[3].setObjet(3,false,1,11); 
 	tabo[4]= Objet();tabo[4].setObjet(4,false,1,28);
 	tabo[5]= Objet();tabo[5].setObjet(5,false,8,28); 
@@ -68,7 +68,8 @@ void Jeu::interationdemande(){
 			
 				 case 1 : getTachefacile().actionTache(num); break; 
 				 case 2 : getTachemoyen().actionTache(num); break; 
-				 case 3 : getTachedifficile().actionTache(num);break;}
+				 case 3 : getTachedifficile().actionTache(num);break;
+				 default:break;}
 				 
 				 getObjet(num).setActifObjet(false);
 				 
@@ -97,6 +98,8 @@ bool Jeu::actionClavier (const char touche) {
 		case 'i' :
 				interationdemande();
 				break;
+		case 'n' : GameOver(); break;
+		default:break;
 	}
 	
 
@@ -130,6 +133,7 @@ void Jeu::NouvelleEtape() //vérfie en boucle si une nouvelle étape doit se lan
 			//problème pour les humains !
 			case 0 : getObjet(6).setActifObjet(true);  getObjet(7).setActifObjet(true);break; 
 			//esquive !
+			default:break;
 
 
 		}
@@ -164,6 +168,7 @@ void Jeu::NouvelleEtape() //vérfie en boucle si une nouvelle étape doit se lan
 			//problème pour les humains !
 			case 0 : getObjet(6).setActifObjet(true);  getObjet(7).setActifObjet(true);break; 
 			//esquive !
+			default:break;
 		}
 		}
 
@@ -196,6 +201,7 @@ void Jeu::NouvelleEtape() //vérfie en boucle si une nouvelle étape doit se lan
 			//problème pour les humains !
 			case 0 : getObjet(6).setActifObjet(true);  getObjet(7).setActifObjet(true);break; 
 			//esquive !
+			default:break;
 
 
 		}
@@ -241,6 +247,7 @@ void Jeu::Victoire() //s'active en cas de victoire au jeu
  cout<<"C'est gagné ;)"<<endl;
 getTimer().setActif(false);
  getBarreProg().getTimerBR().setActif(false);
+ 
 
 
 }

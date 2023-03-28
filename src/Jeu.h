@@ -37,8 +37,10 @@ public :
     const Vaisseau& getVaisseau () const;                        //< \brief accesseur nécesseaire pour l'affichage
     const Perso& getPerso () const;                          //< \brief accesseur nécesseaire pour l'affichage
     Objet& getObjet (int id); 
-    Objet getObjet (int id) const; 
+    const Objet& getObjet (int id) const; 
+     BarreProg& getBarreProg();
     const BarreProg& getBarreProg() const;
+
     Etape getEtape () const;                          //< \brief accesseur nécesseaire pour l'affichage
     Tache getTachefacile () const;                          //< \brief accesseur nécesseaire pour l'affichage
     Tache getTachemoyen () const;                          //< \brief accesseur nécesseaire pour l'affichage
@@ -65,13 +67,14 @@ inline  Tache Jeu::getTachemoyen () const { return tmoyen; }
 inline  Tache Jeu::getTachedifficile () const { return tdifficile; }
 
 inline Objet& Jeu::getObjet(int id)  { return tabo[id]; }
-inline Objet Jeu::getObjet(int id) const { return tabo[id]; }
+inline const Objet& Jeu::getObjet(int id) const { return tabo[id]; }
 
 inline Timer& Jeu::getTimer () {return timer;}
 inline Timer Jeu::getTimer () const {return timer;}
 
-inline const BarreProg& Jeu::getBarreProg() const { return BP; }         // du code court comme ca doit être en inline
+inline  BarreProg& Jeu::getBarreProg()  { return BP; }         // du code court comme ca doit être en inline
 
+inline  const BarreProg& Jeu::getBarreProg() const { return BP; }   
 
 
 

@@ -34,6 +34,7 @@ void Tache::Combinaison(){ // saisie combinaison de touches
         case 2: f1c="s";break;
         case 3: f1c="q";break;
         case 0: f1c="d";break;
+        default:break;
     }
     string f2c;
     switch (f2){
@@ -41,6 +42,7 @@ void Tache::Combinaison(){ // saisie combinaison de touches
         case 2: f2c="s";break;
         case 3: f2c="q";break;
         case 0: f2c="d";break;
+        default:break;
     }
     string f3c;
     switch (f3){
@@ -48,6 +50,7 @@ void Tache::Combinaison(){ // saisie combinaison de touches
         case 2: f3c="s";break;
         case 3: f3c="q";break;
         case 0: f3c="d";break;
+        default:break;
     }
     string f4c;
     switch (f4){
@@ -55,6 +58,7 @@ void Tache::Combinaison(){ // saisie combinaison de touches
         case 2: f4c="s";break;
         case 3: f4c="q";break;
         case 0: f4c="d";break;
+        default:break;
     }
 
 
@@ -76,6 +80,7 @@ void Tache::Combinaison(){ // saisie combinaison de touches
             case 3:
                 cout<<"Appuyez sur la combinaison:"<<f4c<<f1c<<f2c<<f3c<<f4c<<f1c<<endl;
                 r = f4c+f1c+f2c+f3c+f4c+f1c;break;
+            default:break;
         }
         cin >> c;
         if (c == r)
@@ -92,11 +97,11 @@ void Tache::Combinaison(){ // saisie combinaison de touches
 }
 
 void Tache::RecopierCode(){ // saisir le code affiché à l'écran
-    int r;
     srand(time(0));
-    int c;
+    int r; int c;
     do
     {
+    
     switch (difficulte)
     {
     case 1:
@@ -105,6 +110,7 @@ void Tache::RecopierCode(){ // saisir le code affiché à l'écran
         r = rand() % 9999;break;
     case 3:
         r = rand() % 999999;break;
+    default:break;
     }
     
         cout << "Saisir le code : " << r << endl;
@@ -122,12 +128,13 @@ void Tache::RecopierCode(){ // saisir le code affiché à l'écran
 
 void Tache::Calcul(){  // résoudre un calcul simple
     srand(time(0)); // réinitialise la génération aléatoire
+        int c; int r;
+        int r1;
+        int r2;
 
-    int r1;
-    int r2;
-    int c;
-    int r;
 
+    do
+    {
     switch (difficulte)
     {
     case 1:
@@ -139,13 +146,13 @@ void Tache::Calcul(){  // résoudre un calcul simple
     case 3:
         r1 = rand() % 1000;
         r2 = rand() % 100;break;
+    default:break;
     }
 
-    do
-    {
+
         cout << "Combien vaut " << r1 << " + " << r2 << endl;
         cin >> c;
-        r=r1 +r2;
+        r=r1+r2; cout<<r;
         if (c == r)
         {
             cout << "Correct !" << endl;
@@ -154,7 +161,7 @@ void Tache::Calcul(){  // résoudre un calcul simple
         {
             cout << "Faux !" << endl;
         }
-    } while (c != r1 + r2);
+    } while (c != r);
 
 }
 void Tache::SpamTouche(){ // appuyer sur une touche un nombre de fois
@@ -174,6 +181,7 @@ void Tache::SpamTouche(){ // appuyer sur une touche un nombre de fois
                 cout << "Spam 15 fois '0' "<<endl;
                 r = "000000000000000";
                 break;
+            default:break;
         }
         cin >> c;
         if (c == r)
@@ -212,6 +220,7 @@ void Tache::Question(){ // répondre à une question
                     cout << "Question : Simple,"<<endl;
                     cout << "a:Difficile b:Basique"<<endl;
                     r = "b"; break;
+                    default:break;
                 }
                 break;
             case 2:
@@ -233,6 +242,7 @@ void Tache::Question(){ // répondre à une question
                     cout << "Question : Qui est le premier homme a avoir marché sur la lune ? "<<endl;
                     cout << "a:Buzz Aldrin  b:Neil Armstrong  c:Youri Gagarine"<<endl;
                     r = "b"; break;
+                    default:break;
                 }
                 break;
             case 3:
@@ -254,8 +264,10 @@ void Tache::Question(){ // répondre à une question
                     cout << "Question : la France partage sa plus grand frontière avec ... "<<endl;
                     cout << "a:l'Allemagne  b:l'Espagne  c:le Japon  d:le Brésil"<<endl;
                     r = "d"; break;
+                    default:break;
                 }
                 break;
+            default:break;
         }
         cin >> c;
         if (c == r)
@@ -290,6 +302,7 @@ int random = rand()%4;
                     case 0:
                     cout << "Ecrire : mars"<<endl;
                     r = "mars"; break;
+                    default:break;
                 }
                 break;
             case 2:
@@ -307,6 +320,7 @@ int random = rand()%4;
                     case 0:
                     cout << "Ecrire : mercure"<<endl;
                     r = "mercure"; break;
+                    default:break;
                 }
                 break;
             case 3:
@@ -324,8 +338,10 @@ int random = rand()%4;
                     case 0:
                     cout << "Ecrire : sidérale"<<endl;
                     r = "sidérale"; break;
+                    default:break;
                 }
                 break;
+            default:break;
         }
         cin >> c;
         if (c == r)
@@ -360,6 +376,7 @@ int random = rand() % 4;
                     case 0:
                     cout << "Je suis entre le R et le T dans l'alphabet"<<endl;
                     r = "s"; break;
+                    default:break;
                 }
                 break;
             case 2:
@@ -377,6 +394,7 @@ int random = rand() % 4;
                     case 0:
                     cout << "Je sert à couper des arbres"<<endl;
                     r = "h"; break;
+                    default:break;
                 }
                 break;
             case 3:
@@ -394,8 +412,10 @@ int random = rand() % 4;
                     case 0:
                     cout << "Je suis un a dans un o"<<endl;
                     r = "@"; break;
+                    default:break;
                 }
                 break;
+            default:break;
         }
         cin >> c;
         if (c == r)
@@ -441,5 +461,6 @@ switch (idT) {
 					case 7 :
 						Findevent();
 						break;
+                    default:break;
 				 }
 }

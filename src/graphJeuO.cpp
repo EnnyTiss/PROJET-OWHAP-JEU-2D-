@@ -290,6 +290,9 @@ void SDLSimple::sdlBoucle()
                 case SDL_SCANCODE_M: // menu
                     quit = true;
                     break;
+                case SDL_SCANCODE_I:
+                    jeu.actionClavier('i');
+                    break;
                 default:
                     break;
                 }
@@ -300,7 +303,7 @@ void SDLSimple::sdlBoucle()
             }
         }
 
-        // on affiche le jeu sur le buffer cach�
+        // on affiche le jeu sur le buffer caché
         sdlAff();
 
         // on permute les deux buffers (cette fonction ne doit se faire qu'une seule fois dans la boucle)
