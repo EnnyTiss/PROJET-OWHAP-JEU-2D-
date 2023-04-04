@@ -57,7 +57,7 @@ obj/BarreProg.o: src/BarreProg.cpp src/BarreProg.h
 obj/Vec2D.o: src/Vec2D.cpp src/Vec2D.h 
 	g++ $(CFLAGS)  -c src/Vec2D.cpp -o obj/Vec2D.o
 
-obj/graphJeuO.o: src/graphJeuO.cpp src/graphJeuO.h src/Jeu.h 
+obj/graphJeuO.o: src/graphJeuO.cpp src/graphJeuO.h 
 	g++ $(CFLAGS) $(INCLUDES) -c src/graphJeuO.cpp -o obj/graphJeuO.o
 
 clean:
