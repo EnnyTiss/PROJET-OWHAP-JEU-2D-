@@ -25,8 +25,8 @@ Timer::Timer(int v, int vMin, int vMax, bool actif){
     decalage=0;
 }
 
-void Timer::setVal(int v){
-    val = v;
+void Timer::setValmax(int v){
+    valMax = v;
 }
 
 void Timer::setDecalage(int v){
@@ -63,8 +63,8 @@ int Timer::getdebut() const
 void Timer::reinitialiser(){
     setActif(true);
     setDecalage(0);
-    setVal(60);
-    
+    setValmax(60);
+    debut=int (time(nullptr));
 }
 
 
@@ -74,6 +74,6 @@ int Timer::ecoulementTimer(int debut) const
     int t =time(nullptr)-debut;
     float temps = int(t);
     if (actifCompteur==false) {temps=666;}
-    return temps;
+    return temps+decalage;
 
 }

@@ -20,7 +20,7 @@ class Timer {
         Timer();
         Timer(int val, int valMin, int valMax, bool actifCompteur);
         void reinitialiser();
-        void setVal(int v);
+        void setValmax(int v);
         void setActif(bool b);
         int getValMax() const;
         int getdebut() const;

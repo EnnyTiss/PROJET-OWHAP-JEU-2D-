@@ -7,7 +7,7 @@ BarreProg::BarreProg()
     taille=19;
 	const char tabX[20]= {
 
-  "------0-----0-----0",
+  "0-----0-----0-----0",
 
 	};
     timerBR=Timer(0,0,10,true);
@@ -26,7 +26,7 @@ BarreProg::BarreProg(int temps) //constructeur (avec le temps modifiable)
     taille=19;
 	const char tabX[20]= {
 
- "------0-----0-----0",
+ "0-----0-----0-----0",
 
 	};
     timerBR=Timer(0,0,temps,true);

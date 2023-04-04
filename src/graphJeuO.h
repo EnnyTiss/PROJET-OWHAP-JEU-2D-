@@ -49,13 +49,31 @@ private :
     bool withSound;
 
     Image im_perso;
+    Image im_persoBR;
     Image im_mur;
     Image im_sol;
-    Image im_objets;
-    Image im_objActif;
+
+
     Image im_barre;
     Image im_etape;
     Image im_etapeActif;
+
+    Image im_obj0;
+    Image im_obj0act;
+
+    Image im_obj2;
+    Image im_obj2act;
+    Image im_obj3;
+    Image im_obj3act;
+    Image im_obj4;
+    Image im_obj4act;
+    Image im_obj5;
+    Image im_obj5act;
+    Image im_obj6;
+    Image im_obj6act;
+    Image im_obj7;
+
+
 
     bool souris;
     bool touche;

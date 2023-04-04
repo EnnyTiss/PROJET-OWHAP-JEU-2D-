@@ -21,3 +21,6 @@ void Perso::gauche(const Vaisseau & t) {
 	if (t.estPositionPersoValide(posPerso.x,posPerso.y-1)) posPerso.y--;
 }
 
+void Perso::setPosPerso (int a, int b) { 	
+    posPerso.x=a;
+	posPerso.y=b; }

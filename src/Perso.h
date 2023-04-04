@@ -24,11 +24,14 @@ public:
     void bas (const Vaisseau & t);
 
     Vec2D getPosPerso () const;
+    void setPosPerso(int a, int b) ;
 
 };
 
 
 inline Vec2D Perso::getPosPerso () const { return posPerso; }
+ 
+
 
 //inline int Perso::getY () const { return m_y; }
 

@@ -89,6 +89,15 @@ void tacheafaire(Jeu & jeu)
 	}while (c!=res);
 }
 
+void recommencer(Jeu& j)
+{
+j.getTimer().reinitialiser();
+j.getPerso().setPosPerso(5,16);
+j.getEtape().getTimerEtape().reinitialiser();
+j.getBarreProg().getTimerBR().reinitialiser();
+
+}
+
 
 
 void txtBoucle (Jeu & jeu) {
@@ -98,6 +107,7 @@ void txtBoucle (Jeu & jeu) {
 	bool ok = true;
 	int c;
 	char var='m';
+	Timer tmp;
 	do {
 	    txtAff(win,jeu);
 		
@@ -130,13 +140,16 @@ void txtBoucle (Jeu & jeu) {
 				termClear();
 				cout<<"Menu Pause"<<endl<<endl;
 				cout<<"r -> Reprendre"<<endl<<"y-> Recommencer"<<endl<<"q -> Quitter";
-				do {
+				
+				tmp=Timer(); tmp=Timer(60, 0, 666, true);
+				do { 
 				cin>>var;
-				if (var=='q') {ok=false;}
-				if (var=='y') {} //TODO recommencer
-				} while(var!='r' && var!='q');
+				if (var=='q') {ok=false;termClear();}
+				if (var=='r') {jeu.getTimer().setDecalage(-tmp.ecoulementTimer(tmp.getdebut()));}
+				if (var=='y') { recommencer(jeu);}
+				} while(var!='r' && var!='q' && var!='y');
 				break;
-			case 'n': ok=false; break;
+			case 'n': ok=false;  break;
 			}
 			
 		} while (ok);

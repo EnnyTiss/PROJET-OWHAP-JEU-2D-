@@ -159,11 +159,32 @@ SDLSimple::SDLSimple() : jeu()
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
     // IMAGES
-    im_perso.loadFromFile("data/robot.png", renderer);
+    im_perso.loadFromFile("data/perso.png", renderer);
+    im_persoBR.loadFromFile("data/robot.png", renderer);
     im_mur.loadFromFile("data/murVaisseau.png", renderer);
     im_sol.loadFromFile("data/sol.png", renderer);
-    im_objets.loadFromFile("data/fantome.png", renderer);
-    im_objActif.loadFromFile("data/quitter.png", renderer);
+
+
+    im_obj0.loadFromFile("data/obj0.png", renderer);
+    im_obj0act.loadFromFile("data/obj0act.png", renderer);
+
+    im_obj2.loadFromFile("data/obj2.png", renderer);
+    im_obj2act.loadFromFile("data/obj2act.png", renderer);
+
+    im_obj3.loadFromFile("data/obj3.png", renderer);
+    im_obj3act.loadFromFile("data/obj3act.png", renderer);
+
+    im_obj4.loadFromFile("data/obj4.png", renderer);
+    im_obj4act.loadFromFile("data/obj4act.png", renderer);
+
+    im_obj5.loadFromFile("data/obj5.png", renderer);
+    im_obj5act.loadFromFile("data/obj5act.png", renderer);
+
+    im_obj6.loadFromFile("data/obj6.png", renderer);
+    im_obj6act.loadFromFile("data/obj6act.png", renderer);
+
+    im_obj7.loadFromFile("data/obj7.png", renderer);
+    
     im_barre.loadFromFile("data/tiret.png", renderer);
     im_etape.loadFromFile("data/rondbleu.png", renderer);
     im_etapeActif.loadFromFile("data/rondrouge.png", renderer);
@@ -224,16 +245,7 @@ void SDLSimple::sdlAff()
     {
         o[i] = jeu.getObjet(i);
     }
-    /*
-    const Objet& o0 = jeu.getObjet(0);
-    const Objet& o1 = jeu.getObjet(1);
-    const Objet& o2 = jeu.getObjet(2);
-    const Objet& o3 = jeu.getObjet(3);
-    const Objet& o4 = jeu.getObjet(4);
-    const Objet& o5 = jeu.getObjet(5);
-    const Objet& o6 = jeu.getObjet(6);
-    const Objet& o7 = jeu.getObjet(7);*/
-
+    
     // Afficher les sprites des murs, du sol du vaisseau et des objets
     for (x = 0; x < v.getDimX(); ++x)
         for (y = 0; y < v.getDimY(); ++y)
@@ -245,18 +257,62 @@ void SDLSimple::sdlAff()
             {
                 for (int i = 0; i < 8; i++)
                 { // si on est à la pos de l'objet i et qu'il est non actif, afficher sprite nonactif
+                switch (i){//moteur1
+                case 0:    
                     if (Vec2D(x, y) == jeu.getObjet(i).getPosObjet() && !jeu.getObjet(i).getActifObjet())
-                    {
-                        im_objets.draw(renderer, y * TAILLE_SPRITE, x * TAILLE_SPRITE, TAILLE_SPRITE, TAILLE_SPRITE);
-                    }
+                    {im_obj0.draw(renderer, y * TAILLE_SPRITE, x * TAILLE_SPRITE, TAILLE_SPRITE, TAILLE_SPRITE);}
                     else if (Vec2D(x, y) == jeu.getObjet(i).getPosObjet() && jeu.getObjet(i).getActifObjet())
-                    {
-                        im_objActif.draw(renderer, y * TAILLE_SPRITE, x * TAILLE_SPRITE, TAILLE_SPRITE, TAILLE_SPRITE);
-                    }
-                }
+                    { im_obj0act.draw(renderer, y * TAILLE_SPRITE, x * TAILLE_SPRITE, TAILLE_SPRITE, TAILLE_SPRITE);}
+                    break;//moteur2
+                case 7:    if (Vec2D(x, y) == jeu.getObjet(i).getPosObjet() && !jeu.getObjet(i).getActifObjet())
+                    {im_obj7.draw(renderer, y * TAILLE_SPRITE, x * TAILLE_SPRITE, TAILLE_SPRITE, TAILLE_SPRITE);}
+                    else if (Vec2D(x, y) == jeu.getObjet(i).getPosObjet() && jeu.getObjet(i).getActifObjet())
+                    { im_obj7.draw(renderer, y * TAILLE_SPRITE, x * TAILLE_SPRITE, TAILLE_SPRITE, TAILLE_SPRITE);}
+                    break; //energie
+                case 1:    if (Vec2D(x, y) == jeu.getObjet(i).getPosObjet() && !jeu.getObjet(i).getActifObjet())
+                    {im_obj0.draw(renderer, y * TAILLE_SPRITE, x * TAILLE_SPRITE, TAILLE_SPRITE, TAILLE_SPRITE);}
+                    else if (Vec2D(x, y) == jeu.getObjet(i).getPosObjet() && jeu.getObjet(i).getActifObjet())
+                    { im_obj0act.draw(renderer, y * TAILLE_SPRITE, x * TAILLE_SPRITE, TAILLE_SPRITE, TAILLE_SPRITE);}
+                    break;//humain
+                case 2:    if (Vec2D(x, y) == jeu.getObjet(i).getPosObjet() && !jeu.getObjet(i).getActifObjet())
+                    {im_obj2.draw(renderer, y * TAILLE_SPRITE, x * TAILLE_SPRITE, TAILLE_SPRITE, TAILLE_SPRITE);}
+                    else if (Vec2D(x, y) == jeu.getObjet(i).getPosObjet() && jeu.getObjet(i).getActifObjet())
+                    { im_obj2act.draw(renderer, y * TAILLE_SPRITE, x * TAILLE_SPRITE, TAILLE_SPRITE, TAILLE_SPRITE);}
+                    break;//arme
+                case 3:    if (Vec2D(x, y) == jeu.getObjet(i).getPosObjet() && !jeu.getObjet(i).getActifObjet())
+                    {im_obj3.draw(renderer, y * TAILLE_SPRITE, x * TAILLE_SPRITE, TAILLE_SPRITE, TAILLE_SPRITE);}
+                    else if (Vec2D(x, y) == jeu.getObjet(i).getPosObjet() && jeu.getObjet(i).getActifObjet())
+                    { im_obj3act.draw(renderer, y * TAILLE_SPRITE, x * TAILLE_SPRITE, TAILLE_SPRITE, TAILLE_SPRITE);}
+                    break;//bouclier
+                case 4:    if (Vec2D(x, y) == jeu.getObjet(i).getPosObjet() && !jeu.getObjet(i).getActifObjet())
+                    {im_obj4.draw(renderer, y * TAILLE_SPRITE, x * TAILLE_SPRITE, TAILLE_SPRITE, TAILLE_SPRITE);}
+                    else if (Vec2D(x, y) == jeu.getObjet(i).getPosObjet() && jeu.getObjet(i).getActifObjet())
+                    { im_obj4act.draw(renderer, y * TAILLE_SPRITE, x * TAILLE_SPRITE, TAILLE_SPRITE, TAILLE_SPRITE);}
+                    break;//pilotage
+                case 5:    if (Vec2D(x, y) == jeu.getObjet(i).getPosObjet() && !jeu.getObjet(i).getActifObjet())
+                    {im_obj5.draw(renderer, y * TAILLE_SPRITE, x * TAILLE_SPRITE, TAILLE_SPRITE, TAILLE_SPRITE);}
+                    else if (Vec2D(x, y) == jeu.getObjet(i).getPosObjet() && jeu.getObjet(i).getActifObjet())
+                    { im_obj5act.draw(renderer, y * TAILLE_SPRITE, x * TAILLE_SPRITE, TAILLE_SPRITE, TAILLE_SPRITE);}
+                    break;//bonus
+                case 6:    if (Vec2D(x, y) == jeu.getObjet(i).getPosObjet() && !jeu.getObjet(i).getActifObjet())
+                    {im_obj6.draw(renderer, y * TAILLE_SPRITE, x * TAILLE_SPRITE, TAILLE_SPRITE, TAILLE_SPRITE);}
+                    else if (Vec2D(x, y) == jeu.getObjet(i).getPosObjet() && jeu.getObjet(i).getActifObjet())
+                    { im_obj6act.draw(renderer, y * TAILLE_SPRITE, x * TAILLE_SPRITE, TAILLE_SPRITE, TAILLE_SPRITE);}
+                    break;
+                default : break;
+               
+            
+               
+               
+               
+               
+               
+               
+               
+                }}
             }
 
-    // Afficher le sprite de Pacman
+    // Afficher le sprite du perso
     im_perso.draw(renderer, p.getPosPerso().y * TAILLE_SPRITE, p.getPosPerso().x * TAILLE_SPRITE, TAILLE_SPRITE, TAILLE_SPRITE);
 
     // Afficher la barre de progression 
@@ -270,7 +326,7 @@ void SDLSimple::sdlAff()
                       im_etapeActif.draw(renderer, i * TAILLE_SPRITE, 11*TAILLE_SPRITE, TAILLE_SPRITE, TAILLE_SPRITE); }
 					  else
 					  {//le perso qui bouge
-                      im_perso.draw(renderer, i * TAILLE_SPRITE, 11*TAILLE_SPRITE, TAILLE_SPRITE, TAILLE_SPRITE);}
+                      im_persoBR.draw(renderer, i * TAILLE_SPRITE, 11*TAILLE_SPRITE, TAILLE_SPRITE, TAILLE_SPRITE);}
                  }
 				  else
 					{
@@ -292,23 +348,24 @@ void SDLSimple::sdlAff()
     font_im.setSurface(TTF_RenderText_Solid(font, txt.c_str() ,font_color));
     font_im.loadFromCurrentSurface(renderer);
     //cout<<"temps restant  :"<<jeu.getTimer().getValMax()-jeu.getTimer().ecoulementTimer(jeu.getTimer().getdebut())<<endl;
-    cout<<txt<<endl;
+    //cout<<txt<<endl;
 
     SDL_Rect positionTimer;
-    positionTimer.x = 270 * TAILLE_SPRITE;
-    positionTimer.y = 49*TAILLE_SPRITE;
-    positionTimer.w = 100 * TAILLE_SPRITE;
-    positionTimer.h = 30 * TAILLE_SPRITE;
+    positionTimer.x = 600 ;
+    positionTimer.y = 500;
+    positionTimer.w = 100 ;
+    positionTimer.h = 30 ;
     SDL_RenderCopy(renderer, font_im.getTexture(), nullptr, &positionTimer);
     
 
     // Ecrire un titre par dessus
-    SDL_Rect positionTitre;
+    /*SDL_Rect positionTitre;
     positionTitre.x = 270;
     positionTitre.y = 49;
     positionTitre.w = 100;
     positionTitre.h = 30;
     SDL_RenderCopy(renderer, font_im.getTexture(), nullptr, &positionTitre);
+*/
 }
 
 void SDLSimple::sdlBoucle()
@@ -316,15 +373,16 @@ void SDLSimple::sdlBoucle()
     SDL_Event events;
     bool quit = false;
 
-    int Etapedebut = jeu.getEtape().getEtapenum();
+
 
     // tant que ce n'est pas la fin ...
     while (!quit)
     {
-
+        int Etapedebut = jeu.getEtape().getEtapenum();
         // tant qu'il y a des évenements à traiter (cette boucle n'est pas bloquante)
         while (SDL_PollEvent(&events))
-        {
+        {   
+		    
             if (events.type == SDL_QUIT)
                 quit = true; // Si l'utilisateur a clique sur la croix de fermeture
             else if (events.type == SDL_KEYDOWN)
@@ -371,6 +429,7 @@ void SDLSimple::sdlBoucle()
 
         // on affiche le jeu sur le buffer cach�
         sdlAff();
+        jeu.NouvelleEtape();
 
         // on permute les deux buffers (cette fonction ne doit se faire qu'une seule fois dans la boucle)
         SDL_RenderPresent(renderer);

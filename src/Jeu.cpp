@@ -7,7 +7,7 @@ Jeu::Jeu()
 {
 	v=Vaisseau(); 
 	p=Perso();
-	tabo[0]= Objet();tabo[0].setObjet(0,true,1,1);
+	tabo[0]= Objet();tabo[0].setObjet(0,false,1,1);
 	tabo[1]= Objet();tabo[1].setObjet(1,false,8,1); 
 	tabo[2]= Objet();tabo[2].setObjet(2,false,8,10);
 	tabo[3]= Objet();tabo[3].setObjet(3,false,1,11); 
@@ -235,7 +235,6 @@ else {return true;}
 
 void Jeu::GameOver() //s'active en cas de perte au jeu
 {
- cout<<endl<<"C'est perdu"<<endl;
  getTimer().setActif(false);
  getBarreProg().getTimerBR().setActif(false);
 
@@ -244,7 +243,6 @@ void Jeu::GameOver() //s'active en cas de perte au jeu
 
 void Jeu::Victoire() //s'active en cas de victoire au jeu
 {
- cout<<"C'est gagné ;)"<<endl;
  getTimer().setActif(false);
  getBarreProg().getTimerBR().setActif(false);
 
