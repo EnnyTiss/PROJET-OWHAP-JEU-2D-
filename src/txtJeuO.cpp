@@ -91,15 +91,13 @@ void tacheafaire(Jeu & jeu)
 
 
 
-
-
-
 void txtBoucle (Jeu & jeu) {
 	// Creation d'une nouvelle fenetre en mode texte
 	// => fenetre de dimension et position (WIDTH,HEIGHT,STARTX,STARTY)
 	WinTXT win (40,14);//jeu.getDimX(37),jeu.getDimY(10)
 	bool ok = true;
 	int c;
+	char var='m';
 	do {
 	    txtAff(win,jeu);
 		
@@ -129,9 +127,16 @@ void txtBoucle (Jeu & jeu) {
 				if (Etapedebut!=jeu.getEtape().getEtapenum()) {jeu.GameOver();}
 				break;
 			case 'm':
-				ok = false;
+				termClear();
+				cout<<"Menu Pause"<<endl<<endl;
+				cout<<"r -> Reprendre"<<endl<<"y-> Recommencer"<<endl<<"q -> Quitter";
+				do {
+				cin>>var;
+				if (var=='q') {ok=false;}
+				if (var=='y') {} //TODO recommencer
+				} while(var!='r' && var!='q');
 				break;
-			case 'n': jeu.actionClavier('n'); break;
+			case 'n': ok=false; break;
 			}
 			
 		} while (ok);
