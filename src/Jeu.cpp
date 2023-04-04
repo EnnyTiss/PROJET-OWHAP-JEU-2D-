@@ -9,7 +9,7 @@ Jeu::Jeu()
 	p=Perso();
 	tabo[0]= Objet();tabo[0].setObjet(0,true,1,1);
 	tabo[1]= Objet();tabo[1].setObjet(1,false,8,1); 
-	tabo[2]= Objet();tabo[2].setObjet(2,true,8,10);
+	tabo[2]= Objet();tabo[2].setObjet(2,false,8,10);
 	tabo[3]= Objet();tabo[3].setObjet(3,false,1,11); 
 	tabo[4]= Objet();tabo[4].setObjet(4,false,1,28);
 	tabo[5]= Objet();tabo[5].setObjet(5,false,8,28); 

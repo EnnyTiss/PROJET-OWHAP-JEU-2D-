@@ -60,6 +60,40 @@ void txtAff(WinTXT & win, const Jeu & jeu) {
 	
 }
 
+void tacheafaire(Jeu & jeu)
+{
+	string c="";
+	string question="";
+	string res="";
+	jeu.actionClavier('i');
+	
+	
+	
+
+
+	
+	switch (jeu.getEtape().getEtapenum()) {
+		case 1 : res=jeu.getTachefacile().getResString(); question= jeu.getTachefacile().getQuesString();break;
+		case 2 : res=jeu.getTachemoyen().getResString();question= jeu.getTachemoyen().getQuesString();break;
+		case 3 : res=jeu.getTachedifficile().getResString();question= jeu.getTachedifficile().getQuesString();break;
+		default : break;
+	}
+
+	cout<<question;
+	do {
+	cin>>c;
+	cout<<"/"<<res<<"/";
+
+	//if (c!=res)
+	//cout<<"Faux !";
+	}while (c!=res);
+}
+
+
+
+
+
+
 void txtBoucle (Jeu & jeu) {
 	// Creation d'une nouvelle fenetre en mode texte
 	// => fenetre de dimension et position (WIDTH,HEIGHT,STARTX,STARTY)
@@ -90,7 +124,7 @@ void txtBoucle (Jeu & jeu) {
 				break;
 			case 'i':
 				termClear();
-				jeu.actionClavier('i');
+				tacheafaire(jeu);
 				termClear();
 				if (Etapedebut!=jeu.getEtape().getEtapenum()) {jeu.GameOver();}
 				break;
@@ -109,3 +143,4 @@ void txtBoucle (Jeu & jeu) {
 
 
 	}
+
