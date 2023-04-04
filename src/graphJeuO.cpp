@@ -109,13 +109,12 @@ SDLSimple::SDLSimple() : jeu()
         SDL_Quit();
         exit(1);
     }
-    /*
-        if (TTF_Init() != 0) {
+    if (TTF_Init() != 0) {
             cout << "Erreur lors de l'initialisation de la SDL_ttf : " << TTF_GetError() << endl;
             SDL_Quit();
             exit(1);
         }
-    */
+    
 
     int imgFlags = IMG_INIT_PNG | IMG_INIT_JPG;
     if (!(IMG_Init(imgFlags) & imgFlags))
@@ -152,24 +151,23 @@ SDLSimple::SDLSimple() : jeu()
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
     // IMAGES
-    im_perso.loadFromFile("data/pacman.png", renderer);
-    im_mur.loadFromFile("data/mur.png", renderer);
-    im_sol.loadFromFile("data/pastille.png", renderer);
+    im_perso.loadFromFile("data/robot.png", renderer);
+    im_mur.loadFromFile("data/murVaisseau.png", renderer);
+    im_sol.loadFromFile("data/sol.png", renderer);
     im_objets.loadFromFile("data/fantome.png", renderer);
     im_objActif.loadFromFile("data/quitter.png", renderer);
 
     // FONTS
-    /*font = TTF_OpenFont("data/DejaVuSansCondensed.ttf",50);
-    if (font == nullptr)
-        font = TTF_OpenFont("../data/DejaVuSansCondensed.ttf",50);
+    font = TTF_OpenFont("data/DejaVuSansCondensed.ttf",50);
+    
     if (font == nullptr) {
             cout << "Failed to load DejaVuSansCondensed.ttf! SDL_TTF Error: " << TTF_GetError() << endl;
             SDL_Quit();
             exit(1);
     }
-    font_color.r = 50;font_color.g = 50;font_color.b = 255;
-    font_im.setSurface(TTF_RenderText_Solid(font,"Pacman",font_color));
-    font_im.loadFromCurrentSurface(renderer);*/
+    font_color.r = 0;font_color.g = 250;font_color.b = 255;
+    font_im.setSurface(TTF_RenderText_Solid(font,"OWHAP",font_color));
+    font_im.loadFromCurrentSurface(renderer);
 
     /*
     // SONS
@@ -188,9 +186,9 @@ SDLSimple::SDLSimple() : jeu()
 
 SDLSimple::~SDLSimple()
 {
-    /* if (withSound) Mix_Quit();
-     TTF_CloseFont(font);
-     TTF_Quit();*/
+    //if (withSound) Mix_Quit();
+    TTF_CloseFont(font);
+    TTF_Quit();
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
@@ -286,12 +284,12 @@ void SDLSimple::sdlBoucle()
                 case SDL_SCANCODE_D://droite
                     jeu.actionClavier('d');
                     break;
+                case SDL_SCANCODE_I: //intéragir
+                    jeu.actionClavier('i'); 
+                    break;
                 case SDL_SCANCODE_ESCAPE:
                 case SDL_SCANCODE_M: // menu
                     quit = true;
-                    break;
-                case SDL_SCANCODE_I:
-                    jeu.actionClavier('i');
                     break;
                 default:
                     break;
@@ -303,7 +301,7 @@ void SDLSimple::sdlBoucle()
             }
         }
 
-        // on affiche le jeu sur le buffer caché
+        // on affiche le jeu sur le buffer cach�
         sdlAff();
 
         // on permute les deux buffers (cette fonction ne doit se faire qu'une seule fois dans la boucle)
