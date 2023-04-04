@@ -235,7 +235,7 @@ else {return true;}
 
 void Jeu::GameOver() //s'active en cas de perte au jeu
 {
- cout<<endl<<"C'est perdu"<<endl;
+ //cout<<endl<<"C'est perdu"<<endl;
  getTimer().setActif(false);
  getBarreProg().getTimerBR().setActif(false);
 
@@ -244,8 +244,8 @@ void Jeu::GameOver() //s'active en cas de perte au jeu
 
 void Jeu::Victoire() //s'active en cas de victoire au jeu
 {
- cout<<"C'est gagné ;)"<<endl;
-getTimer().setActif(false);
+ //cout<<"C'est gagné ;)"<<endl;
+ getTimer().setActif(false);
  getBarreProg().getTimerBR().setActif(false);
  
 

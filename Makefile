@@ -1,10 +1,10 @@
 EXEC_NAME = bin/txt bin/sdl
 
 OBJ3 =  obj/main_txt.o obj/Vaisseau.o obj/txtJeuO.o  obj/winTxtO.o obj/Jeu.o obj/Perso.o obj/Evenement.o obj/Objet.o obj/Vec2D.o obj/Timer.o obj/BarreProg.o obj/Etape.o obj/Tache.o
-OBJ4 = 	obj/main_graph.o obj/Vaisseau.o obj/graphJeuO.o obj/Jeu.o obj/Perso.o obj/Evenement.o obj/Objet.o obj/Vec2D.o obj/Timer.o obj/BarreProg.o obj/Etape.o obj/Tache.o
+OBJ4 = 	obj/main_graph.o obj/Vaisseau.o obj/graphJeuO.o obj/winTxtO.o obj/Jeu.o obj/Perso.o obj/Evenement.o obj/Objet.o obj/Vec2D.o obj/Timer.o obj/BarreProg.o obj/Etape.o obj/Tache.o 
 CFLAGS = -Wall -ggdb
 INCLUDES= -I./include/SDL2 
-LIBS = -lSDL2 -lSDL2_image 
+LIBS = -lSDL2 -lSDL2_image -lSDL2_ttf
 	
 all: $(EXEC_NAME) 
 
@@ -18,7 +18,7 @@ bin/sdl: $(OBJ4)
 obj/main_txt.o: src/main_txt.cpp src/Jeu.h src/winTxtO.h src/txtJeuO.h
 	g++ $(CFLAGS)  -c src/main_txt.cpp -o obj/main_txt.o
 
-obj/main_graph.o: src/main_graph.cpp src/Jeu.h src/graphJeuO.h
+obj/main_graph.o: src/main_graph.cpp src/Jeu.h src/winTxtO.h src/graphJeuO.h
 	g++ $(CFLAGS) $(INCLUDES) -c src/main_graph.cpp -o obj/main_graph.o
 
 obj/txtJeuO.o: src/txtJeuO.cpp src/txtJeuO.h src/Jeu.h
@@ -57,7 +57,7 @@ obj/BarreProg.o: src/BarreProg.cpp src/BarreProg.h
 obj/Vec2D.o: src/Vec2D.cpp src/Vec2D.h 
 	g++ $(CFLAGS)  -c src/Vec2D.cpp -o obj/Vec2D.o
 
-obj/graphJeuO.o: src/graphJeuO.cpp src/graphJeuO.h 
+obj/graphJeuO.o: src/graphJeuO.cpp src/graphJeuO.h src/Jeu.h 
 	g++ $(CFLAGS) $(INCLUDES) -c src/graphJeuO.cpp -o obj/graphJeuO.o
 
 clean:

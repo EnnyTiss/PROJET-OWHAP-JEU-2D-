@@ -1,5 +1,5 @@
-#ifndef _SDLJEU_H
-#define _SDLJEU_H
+#ifndef _GRAPHJEUO_H
+#define _GRAPHJEUO_H
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
@@ -53,6 +53,9 @@ private :
     Image im_sol;
     Image im_objets;
     Image im_objActif;
+    Image im_barre;
+    Image im_etape;
+    Image im_etapeActif;
 
     bool souris;
     bool touche;
@@ -62,7 +65,7 @@ public :
     ~SDLSimple ();
     void sdlBoucle ();
     void sdlAff ();
-
+    void termClear();
 };
 
 #endif

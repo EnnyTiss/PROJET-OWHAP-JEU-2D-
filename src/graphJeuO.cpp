@@ -1,7 +1,15 @@
+#ifdef _WIN32
+#include <windows.h>
+#else
+#include <unistd.h>
+#endif // WIN32
 #include <cassert>
 #include <time.h>
 #include "graphJeuO.h"
 #include <stdlib.h>
+#include <string>
+#include "winTxtO.h"
+
 
 #include <iostream>
 using namespace std;
@@ -156,6 +164,9 @@ SDLSimple::SDLSimple() : jeu()
     im_sol.loadFromFile("data/sol.png", renderer);
     im_objets.loadFromFile("data/fantome.png", renderer);
     im_objActif.loadFromFile("data/quitter.png", renderer);
+    im_barre.loadFromFile("data/tiret.png", renderer);
+    im_etape.loadFromFile("data/rondbleu.png", renderer);
+    im_etapeActif.loadFromFile("data/rondrouge.png", renderer);
 
     // FONTS
     font = TTF_OpenFont("data/DejaVuSansCondensed.ttf",50);
@@ -168,6 +179,9 @@ SDLSimple::SDLSimple() : jeu()
     font_color.r = 0;font_color.g = 250;font_color.b = 255;
     font_im.setSurface(TTF_RenderText_Solid(font,"OWHAP",font_color));
     font_im.loadFromCurrentSurface(renderer);
+    
+    
+
 
     /*
     // SONS
@@ -245,6 +259,49 @@ void SDLSimple::sdlAff()
     // Afficher le sprite de Pacman
     im_perso.draw(renderer, p.getPosPerso().y * TAILLE_SPRITE, p.getPosPerso().x * TAILLE_SPRITE, TAILLE_SPRITE, TAILLE_SPRITE);
 
+    // Afficher la barre de progression 
+
+    im_barre.draw(renderer, y * TAILLE_SPRITE, x * TAILLE_SPRITE, TAILLE_SPRITE, TAILLE_SPRITE);
+    for (int i=0; i<jeu.getBarreProg().getTaille();i++)
+				{ if (i==jeu.getBarreProg().getNow())
+				  {
+					  if (jeu.getBarreProg().getC(i)=='0')//les étapes
+					  {//changement d'étape
+                      im_etapeActif.draw(renderer, i * TAILLE_SPRITE, 11*TAILLE_SPRITE, TAILLE_SPRITE, TAILLE_SPRITE); }
+					  else
+					  {//le perso qui bouge
+                      im_perso.draw(renderer, i * TAILLE_SPRITE, 11*TAILLE_SPRITE, TAILLE_SPRITE, TAILLE_SPRITE);}
+                 }
+				  else
+					{
+                    if (jeu.getBarreProg().getC(i)=='-')//les étapes
+					  {
+                        im_barre.draw(renderer, i*TAILLE_SPRITE, 11*TAILLE_SPRITE, TAILLE_SPRITE,  TAILLE_SPRITE);//etape normale 
+                      }
+					  else
+					  {
+                      im_etape.draw(renderer,  i*TAILLE_SPRITE, 11*TAILLE_SPRITE, TAILLE_SPRITE, TAILLE_SPRITE);}// les tirets
+                    } 
+				}
+    
+    // Ecrire le timer restant
+    //font timer
+    font_color.r = 255;font_color.g = 250;font_color.b = 255;
+    int diff = jeu.getTimer().getValMax()-jeu.getTimer().ecoulementTimer(jeu.getTimer().getdebut());
+    string txt = /*"Temps restant" +*/ to_string(diff);
+    font_im.setSurface(TTF_RenderText_Solid(font, txt.c_str() ,font_color));
+    font_im.loadFromCurrentSurface(renderer);
+    //cout<<"temps restant  :"<<jeu.getTimer().getValMax()-jeu.getTimer().ecoulementTimer(jeu.getTimer().getdebut())<<endl;
+    cout<<txt<<endl;
+
+    SDL_Rect positionTimer;
+    positionTimer.x = 270 * TAILLE_SPRITE;
+    positionTimer.y = 49*TAILLE_SPRITE;
+    positionTimer.w = 100 * TAILLE_SPRITE;
+    positionTimer.h = 30 * TAILLE_SPRITE;
+    SDL_RenderCopy(renderer, font_im.getTexture(), nullptr, &positionTimer);
+    
+
     // Ecrire un titre par dessus
     SDL_Rect positionTitre;
     positionTitre.x = 270;
@@ -258,6 +315,8 @@ void SDLSimple::sdlBoucle()
 {
     SDL_Event events;
     bool quit = false;
+
+    int Etapedebut = jeu.getEtape().getEtapenum();
 
     // tant que ce n'est pas la fin ...
     while (!quit)
@@ -286,6 +345,15 @@ void SDLSimple::sdlBoucle()
                     break;
                 case SDL_SCANCODE_I: //intéragir
                     jeu.actionClavier('i'); 
+                   // termClear();
+                    if (Etapedebut!=jeu.getEtape().getEtapenum()) {
+                        jeu.GameOver(); 
+                        
+                        font_color.r = 255;font_color.g = 250;font_color.b = 255;
+                        font_im.setSurface(TTF_RenderText_Solid(font, "C'est perdu ! :c" ,font_color));
+                        font_im.loadFromCurrentSurface(renderer);
+                    }
+                   // termClear();
                     break;
                 case SDL_SCANCODE_ESCAPE:
                 case SDL_SCANCODE_M: // menu
