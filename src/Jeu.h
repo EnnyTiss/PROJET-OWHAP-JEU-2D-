@@ -42,9 +42,13 @@ public :
     const BarreProg& getBarreProg() const;
 
     Etape getEtape () const;                          //< \brief accesseur nécesseaire pour l'affichage
+    Tache&getTachefacile () ;                          //< \brief accesseur nécesseaire pour l'affichage
+    Tache& getTachemoyen () ;                          //< \brief accesseur nécesseaire pour l'affichage
+    Tache&getTachedifficile () ;                          //< \brief accesseur nécesseaire pour l'affichage
     Tache getTachefacile () const;                          //< \brief accesseur nécesseaire pour l'affichage
     Tache getTachemoyen () const;                          //< \brief accesseur nécesseaire pour l'affichage
-    Tache getTachedifficile () const;                          //< \brief accesseur nécesseaire pour l'affichage
+    Tache getTachedifficile () const;   
+
 
     Timer& getTimer (); 
     Timer getTimer () const; 
@@ -62,6 +66,9 @@ inline const Vaisseau& Jeu::getVaisseau () const { return v; }         // du cod
 
 inline const Perso& Jeu::getPerso () const { return p; }
 inline  Etape Jeu::getEtape () const { return E; }
+inline  Tache& Jeu::getTachefacile ()  { return tfacile; }
+inline  Tache& Jeu::getTachemoyen ()  { return tmoyen; }
+inline  Tache& Jeu::getTachedifficile ()  { return tdifficile; }
 inline  Tache Jeu::getTachefacile () const { return tfacile; }
 inline  Tache Jeu::getTachemoyen () const { return tmoyen; }
 inline  Tache Jeu::getTachedifficile () const { return tdifficile; }

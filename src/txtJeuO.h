@@ -4,5 +4,6 @@
 #include "Jeu.h"
 
 void txtBoucle (Jeu & j);
+void tacheafaire(Jeu & j);
 
 #endif

@@ -4,7 +4,7 @@ OBJ3 =  obj/main_txt.o obj/Vaisseau.o obj/txtJeuO.o  obj/winTxtO.o obj/Jeu.o obj
 OBJ4 = 	obj/main_graph.o obj/Vaisseau.o obj/graphJeuO.o obj/Jeu.o obj/Perso.o obj/Evenement.o obj/Objet.o obj/Vec2D.o obj/Timer.o obj/BarreProg.o obj/Etape.o obj/Tache.o
 CFLAGS = -Wall -ggdb
 INCLUDES= -I./include/SDL2 
-LIBS = -lSDL2 -lSDL2_image 
+LIBS = -lSDL2 -lSDL2_image -lSDL2_ttf
 	
 all: $(EXEC_NAME) 
 

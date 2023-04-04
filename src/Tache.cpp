@@ -1,16 +1,15 @@
 #include "Tache.h"
-#include <cassert>
-#include <iostream>
-#include <random>
-#include <ctime>
-#include <cstdlib>
-#include <iostream>
+
+
 
 using namespace std;
 Tache::Tache()
 {
     idTache = 0;
     difficulte = 1;
+    string resString=".";
+    string quesString=".";
+
 }
 
 Tache::Tache(int diff)
@@ -60,48 +59,24 @@ void Tache::Combinaison(){ // saisie combinaison de touches
         case 0: f4c="d";break;
         default:break;
     }
-
-
-
-
-
-    string r;
-    string c;
-    do{
-        switch (difficulte){
+            switch (difficulte){
             case 1:
-                cout<<"Appuyez sur la combinaison: "<<f1c<<f2c<<endl;
-                cout<<f1<<f2<<f3<<f4;
-                r = f1c+f2c;
+                resString = f1c+f2c;
                 break;
             case 2:
-                cout<<"Appuyez sur la combinaison: "<<f1c<<f2c<<f3c<<f4c<<endl;
-                r = f1c+f2c+f3c+f4c;break;
+                resString = f1c+f2c+f3c+f4c;break;
             case 3:
-                cout<<"Appuyez sur la combinaison:"<<f4c<<f1c<<f2c<<f3c<<f4c<<f1c<<endl;
-                r = f4c+f1c+f2c+f3c+f4c+f1c;break;
+                resString =f4c+f1c+f2c+f3c+f4c+f1c;break;
             default:break;
         }
-        cin >> c;
-        if (c == r)
-        {
-        cout<<"Correct !"<<endl;
-        }
-        else
-        {
-        cout<<"Faux !"<<endl;       
-        }
-    }while (c!=r);
-   
+            quesString=" Appuyez sur la combinaison:"+resString;
 
 }
 
 void Tache::RecopierCode(){ // saisir le code affiché à l'écran
     srand(time(0));
-    int r; int c;
-    do
-    {
-    
+    int r; 
+
     switch (difficulte)
     {
     case 1:
@@ -113,28 +88,18 @@ void Tache::RecopierCode(){ // saisir le code affiché à l'écran
     default:break;
     }
     
-        cout << "Saisir le code : " << r << endl;
-        cin >> c;
-        if (c == r)
-        {
-            cout << "Correct !" << endl;
-        }
-        else
-        {
-            cout << "Faux !" << endl;
-        }
-    } while (c != r);
+        quesString="Saisir le code : "+to_string(r);
+        resString =to_string(r);
+
 }
 
 void Tache::Calcul(){  // résoudre un calcul simple
     srand(time(0)); // réinitialise la génération aléatoire
-        int c; int r;
+        int c; 
         int r1;
         int r2;
 
 
-    do
-    {
     switch (difficulte)
     {
     case 1:
@@ -148,78 +113,50 @@ void Tache::Calcul(){  // résoudre un calcul simple
         r2 = rand() % 100;break;
     default:break;
     }
-
-
-        cout << "Combien vaut " << r1 << " + " << r2 << endl;
-        cin >> c;
-        r=r1+r2; cout<<r;
-        if (c == r)
-        {
-            cout << "Correct !" << endl;
-        }
-        else
-        {
-            cout << "Faux !" << endl;
-        }
-    } while (c != r);
+     string sr1=to_string(r1);     string sr2=to_string(r2);
+     quesString="Combien vaut "+sr1+"+"+sr2;
+     c=r1+r2;
+     resString=to_string(c);
 
 }
 void Tache::SpamTouche(){ // appuyer sur une touche un nombre de fois
-    string r;
-    string c;
-    do{
         switch (difficulte){
             case 1:
-                cout << "Spam 5 fois '0'"<<endl;
-                r = "00000";
+                quesString="Spam 5 fois 0 ";
+                resString ="00000";
+
                 break;
             case 2:
-                cout << "Spam 10 fois '0' " <<endl;
-                r = "0000000000";
+                quesString="Spam 10 fois 0 ";
+                 resString ="0000000000";
                 break;
             case 3:
-                cout << "Spam 15 fois '0' "<<endl;
-                r = "000000000000000";
+                quesString="Spam 15 fois 0 ";
+                resString ="000000000000000";
                 break;
             default:break;
         }
-        cin >> c;
-        if (c == r)
-        {
-            cout << "Correcte !";
-        }
-        else
-        {
-            cout << "Faux !";
-        }
-    } while (c != r);
+
 }
 void Tache::Question(){ // répondre à une question
-    string r;
-    string c;
  srand(time(0));
  int random = rand()%4;
-    do{
         switch (difficulte){
             case 1:
                 switch (random)
                 {
                     case 1:
-                    cout << "Question : La réponse à la vie ?"<<endl;
-                    cout << "a:42  b:non"<<endl;
-                    r = "a"; break;
+                    quesString="La réponse à la vie ?  a:42  b:non";
+                    resString = "a"; break;
                     case 2 :
-                    cout << "Question : Pourquoi ?"<<endl;
-                    cout << "a:je sais pas  b:feur"<<endl;
-                    r = "b"; break;  
+                    quesString="Pourquoi ? a:je sais pas  b:feur";
+                    resString = "b"; break;  
                     case 3:                  
-                    cout << "Question : La première lettre de l'alphabet ?"<<endl;
-                    cout << "a:b  b:a"<<endl;                   
-                    r = "b"; break;
+                    quesString="La première lettre de l'alphabet ?  a:b  b:a";                  
+                    resString = "b"; break;
                     case 0:
-                    cout << "Question : Simple,"<<endl;
-                    cout << "a:Difficile b:Basique"<<endl;
-                    r = "b"; break;
+                    quesString="Simple, ... ? a:Difficile b:Basique";
+                    resString = "b"; break;
                     default:break;
                 }
                 break;
@@ -227,21 +164,17 @@ void Tache::Question(){ // répondre à une question
                 switch (random)
                 {
                     case 1:
-                    cout << "Question : Quel est la dérivée de x³ ?"<<endl;
-                    cout << "a:x²  b:2x³  c:3x²"<<endl;
-                    r = "c"; break;
+                    quesString=" Quel est la dérivée de x³ ? a:x²  b:2x³  c:3x²";
+                    resString = "c"; break;
                     case 2 :
-                    cout << "Question : Qui est le dieu romain de la guerre ?"<<endl;
-                    cout << "a:Mars b:Ares  c:Guerroyeur le destructeur"<<endl;
-                    r = "a"; break;
+                    quesString=" Qui est le dieu romain de la guerre ? a:Mars b:Ares  c:Guerroyeur le destructeur";
+                    resString = "a"; break;
                     case 3:                  
-                    cout << "Question : Qui a crée le courant electrique alternatif ?"<<endl;
-                    cout << "a:Thomas edison  b:Nikola Tesla  c:Elon Musk  d:125"<<endl;
-                    r = "c"; break;
+                    quesString=" Qui a crée le courant electrique alternatif ? a:Thomas edison  b:Nikola Tesla  c:Elon Musk  d:125";
+                    resString = "c"; break;
                     case 0:
-                    cout << "Question : Qui est le premier homme a avoir marché sur la lune ? "<<endl;
-                    cout << "a:Buzz Aldrin  b:Neil Armstrong  c:Youri Gagarine"<<endl;
-                    r = "b"; break;
+                    quesString=" Qui est le premier homme a avoir marché sur la lune ? a:Buzz Aldrin  b:Neil Armstrong  c:Youri Gagarine";
+                    resString = "b"; break;
                     default:break;
                 }
                 break;
@@ -249,59 +182,44 @@ void Tache::Question(){ // répondre à une question
                 switch (random)
                 {
                     case 1:
-                    cout << "Question : Le son est ... dans l'eau que dans l'air"<<endl;
-                    cout << "a:Plus rapide  b:Plus lent  c:Aussi rapide  d:Aussi lent"<<endl;
-                    r = "a"; break;
+                    quesString=" Le son est ... dans l'eau que dans l'air a:Plus rapide  b:Plus lent  c:Aussi rapide  d:Aussi lent";
+                    resString = "a"; break;
                     case 2 :
-                    cout << "Question : La tour Eiffel à été construite en ... "<<endl;
-                    cout << "a:1823  b:1889  c:1952  d:2010"<<endl;
-                    r = "b"; break;
+                    quesString=" La tour Eiffel à été construite en ... a:1823  b:1889  c:1952  d:2010";
+                    resString = "b"; break;
                     case 3:                  
-                    cout << "Question : Une année lumière est égale à .... milliards de km"<<endl;
-                    cout << "a:30  b:6667  c:9460  d:125"<<endl;
-                    r = "c"; break;
+                    quesString=" Une année lumière est égale à ... milliards de km   a:30  b:6667  c:9460  d:125";
+                    resString = "c"; break;
                     case 0:
-                    cout << "Question : la France partage sa plus grand frontière avec ... "<<endl;
-                    cout << "a:l'Allemagne  b:l'Espagne  c:le Japon  d:le Brésil"<<endl;
-                    r = "d"; break;
+                    quesString=" la France partage sa plus grand frontière avec ... a:l'Allemagne  b:l'Espagne  c:le Japon  d:le Brésil";
+                    resString = "d"; break;
                     default:break;
                 }
                 break;
             default:break;
-        }
-        cin >> c;
-        if (c == r)
-        {
-            cout << "Correcte !";
-        }
-        else
-        {
-            cout << "Faux !";
-        }
-    } while (c != r);
-}
+}}
+
+
 void Tache::RecopierMot(){ // saisir le mot affiché à l'écran
-string r;
-string c;
+
 srand(time(0));
 int random = rand()%4;
-    do{
         switch (difficulte){
             case 1:
                 switch (random)
                 {
                     case 1:
-                    cout << "Ecrire : soleil"<<endl;
-                    r = "soleil"; break;
+                    quesString="Ecrire : soleil";
+                    resString = "soleil"; break;
                     case 2 :
-                    cout << "Ecrire : espace"<<endl;
-                    r = "espace"; break;  
+                    quesString= "Ecrire : espace";
+                    resString = "espace"; break;  
                     case 3:                  
-                    cout << "Ecrire : lune"<<endl;
-                    r = "lune"; break;
+                    quesString= "Ecrire : lune";
+                    resString = "lune"; break;
                     case 0:
-                    cout << "Ecrire : mars"<<endl;
-                    r = "mars"; break;
+                    quesString="Ecrire : mars";
+                    resString = "mars"; break;
                     default:break;
                 }
                 break;
@@ -309,17 +227,17 @@ int random = rand()%4;
                 switch (random)
                 {
                     case 1:
-                    cout << "Ecrire : vortex"<<endl;
-                    r = "vortex"; break;
+                    quesString= "Ecrire : vortex";
+                    resString = "vortex"; break;
                     case 2 :
-                    cout << "Ecrire : planète"<<endl;
-                    r = "planète"; break;  
+                    quesString="Ecrire : planète";
+                    resString = "planète"; break;  
                     case 3:                  
-                    cout << "Ecrire : éclipse"<<endl;
-                    r = "éclipse"; break;
+                    quesString= "Ecrire : éclipse";
+                    resString = "éclipse"; break;
                     case 0:
-                    cout << "Ecrire : mercure"<<endl;
-                    r = "mercure"; break;
+                    quesString= "Ecrire : mercure";
+                    resString = "mercure"; break;
                     default:break;
                 }
                 break;
@@ -327,55 +245,46 @@ int random = rand()%4;
                 switch (random)
                 {
                     case 1:
-                    cout << "Ecrire : astéroide"<<endl;
-                    r = "astéroide"; break;
+                    quesString= "Ecrire : astéroide";
+                    resString = "astéroide"; break;
                     case 2 :
-                    cout << "Ecrire : nébuleuse"<<endl;
-                    r = "nébuleuse"; break;  
+                    quesString= "Ecrire : nébuleuse";
+                    resString = "nébuleuse"; break;  
                     case 3:                  
-                    cout << "Ecrire : tellurique"<<endl;
-                    r = "tellurique"; break;
+                    quesString="Ecrire : tellurique";
+                    resString = "tellurique"; break;
                     case 0:
-                    cout << "Ecrire : sidérale"<<endl;
-                    r = "sidérale"; break;
+                    quesString= "Ecrire : sidérale";
+                    resString = "sidérale"; break;
                     default:break;
                 }
                 break;
             default:break;
         }
-        cin >> c;
-        if (c == r)
-        {
-            cout << "Correcte !";
-        }
-        else
-        {
-            cout << "Faux !";
-        }
-    } while (c != r);
+
+
 }
 void Tache::AppuiTouche(){
 string r;
 string c;
 srand(time(0));
 int random = rand() % 4;
-    do{
         switch (difficulte){
             case 1:
                 switch (random)
                 {
                     case 1:
-                    cout << "Je suis l'argent au USA"<<endl;
-                    r = "$"; break;
+                    quesString="Je suis l'argent au USA";
+                    resString = "$"; break;
                     case 2 :
-                    cout << "Je suis le symbole Modulo"<<endl;
-                    r = "%"; break;  
+                    quesString= "Je suis le symbole Modulo";
+                    resString = "%"; break;  
                     case 3:                  
-                    cout << "Je suis un liquide vital"<<endl;
-                    r = "o"; break;
+                    quesString= "Je suis un liquide vital";
+                    resString = "o"; break;
                     case 0:
-                    cout << "Je suis entre le R et le T dans l'alphabet"<<endl;
-                    r = "s"; break;
+                    quesString= "Je suis entre le R et le T dans l'alphabet";
+                    resString = "s"; break;
                     default:break;
                 }
                 break;
@@ -383,17 +292,17 @@ int random = rand() % 4;
                 switch (random)
                 {
                     case 1:
-                    cout << "Je peut être des mers, filante ou à neutron"<<endl;
-                    r = "*"; break;
+                    quesString=  "Je peut être des mers, filante ou à neutron";
+                    resString = "*"; break;
                     case 2 :
-                    cout << "Je vous fait un clin d'oeil en souriant"<<endl;
-                    r = ";)"; break;  
+                    quesString=  "Je vous fait un clin d'oeil en souriant";
+                    resString = ";)"; break;  
                     case 3:                  
-                    cout << "Je suis bu par les anglais"<<endl;
-                    r = "t"; break;
+                    quesString=  "Je suis bu par les anglais";
+                    resString = "t"; break;
                     case 0:
-                    cout << "Je sert à couper des arbres"<<endl;
-                    r = "h"; break;
+                    quesString=  "Je sert à couper des arbres";
+                    resString = "h"; break;
                     default:break;
                 }
                 break;
@@ -401,36 +310,28 @@ int random = rand() % 4;
                 switch (random)
                 {
                     case 1:
-                    cout << "Je peut être l'infini si on me tourne ou le vide si on me coupe"<<endl;
-                    r = "8"; break;
+                     quesString= "Je peut être l'infini si on me tourne ou le vide si on me coupe";
+                    resString = "8"; break;
                     case 2 :
-                    cout << "Je vais de haut en bas"<<endl;
-                    r = "↓"; break;  
+                     quesString= "Je vais de haut en bas";
+                    resString = "↓"; break;  
                     case 3:                  
-                    cout << "Je suis le o et le e "<<endl;
-                    r = "œ"; break;
+                     quesString= "Je suis le o et le e ";
+                    resString = "œ"; break;
                     case 0:
-                    cout << "Je suis un a dans un o"<<endl;
-                    r = "@"; break;
+                     quesString= "Je suis un a dans un o";
+                    resString = "@"; break;
                     default:break;
                 }
                 break;
             default:break;
         }
-        cin >> c;
-        if (c == r)
-        {
-            cout << "Correcte !";
-        }
-        else
-        {
-            cout << "Faux !";
-        }
-    } while (c != r);
+
 }
 
 void Tache::Findevent(){
-cout<<"bien ouej"<<endl;
+quesString= "0";
+resString = "0";
 }
 
 
